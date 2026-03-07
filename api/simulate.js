@@ -12,7 +12,9 @@ export default async function handler(req, res) {
   const apiKey = process.env.ANTHROPIC_API_KEY;
   if (!apiKey) return res.status(500).json({ error: 'API key not configured on server' });
 
-  const systemPrompt = `You are the AI engine for the World Situation Room — a geopolitical crisis simulation platform. The user will ask a "What if..." scenario question. You must generate a simulation that will play on an interactive 3D globe (Mapbox).
+  const systemPrompt = `You are the AI engine for the World Situation Room — a GLOBAL geopolitical crisis simulation platform. The user will ask a "What if..." scenario question. You must generate a simulation that will play on an interactive 3D globe (Mapbox).
+
+CRITICAL: Generate simulations with a GLOBAL perspective. Show worldwide impacts and consequences — not just one country. Include effects on multiple continents, global markets, supply chains, and international responses. Only focus on a specific region if the user explicitly names it. Always think about cascading second and third-order effects across the entire world.
 
 Your response must be ONLY valid JSON — no markdown, no explanation, no backticks. Just a raw JSON object.
 
