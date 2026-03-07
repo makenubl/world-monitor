@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>HORMUZ CRISIS — Pakistan Impact Assessment</title>
+<meta property="og:title" content="Hormuz Crisis — Pakistan Macro Impact Assessment">
+<meta property="og:description" content="Decision-grade scenario analysis: inflationary and macroeconomic impact of Strait of Hormuz disruption on Pakistan. 5 scenarios modeled.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3CradialGradient id='g' cx='50%25' cy='50%25' r='50%25'%3E%3Cstop offset='0%25' stop-color='%23091428'/%3E%3Cstop offset='100%25' stop-color='%2304060a'/%3E%3C/radialGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='30' fill='url(%23g)' stroke='%23ff3333' stroke-width='2'/%3E%3Cellipse cx='32' cy='32' rx='30' ry='12' fill='none' stroke='%2300e5ff' stroke-width='0.8' opacity='0.5'/%3E%3Cellipse cx='32' cy='32' rx='20' ry='30' fill='none' stroke='%2300e5ff' stroke-width='0.8' opacity='0.4'/%3E%3Cpath d='M32 2 A30 30 0 0 1 55 16' stroke='%23ff3333' stroke-width='2.5' fill='none' stroke-linecap='round' opacity='0.9'/%3E%3Ccircle cx='55' cy='16' r='2.5' fill='%23ff3333'/%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+--bg:#04060a;--sf:#080b12;--sf2:#0d1119;--bd:#1a1f30;
+--red:#ff3333;--cyan:#00e5ff;--green:#00e676;--amber:#ffab00;--orange:#ff6d00;
+--txt:#e8eaf6;--dim:#5c6380;--label:#8892b0;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font-family:'Inter',sans-serif;font-size:13px;line-height:1.6;overflow-x:hidden}
+::selection{background:rgba(0,229,255,.2)}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--bd);border-radius:3px}
+
+/* TOP BAR */
+.topbar{position:sticky;top:0;z-index:100;background:rgba(4,6,10,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--bd);padding:12px 40px;display:flex;align-items:center;justify-content:space-between}
+.tb-left{display:flex;align-items:center;gap:16px}
+.tb-badge{background:var(--red);color:#fff;font-family:'Oswald';font-size:9px;font-weight:600;letter-spacing:2px;padding:4px 12px;text-transform:uppercase}
+.tb-title{font-family:'Oswald';font-size:22px;font-weight:600;letter-spacing:2px;text-transform:uppercase}
+.tb-title b{color:var(--red)}
+.tb-right{display:flex;align-items:center;gap:20px;font-family:'JetBrains Mono';font-size:10px;color:var(--dim)}
+.tb-stat{text-align:center}
+.tb-stat .v{font-size:18px;font-weight:700;color:var(--txt);font-family:'Oswald'}
+.tb-stat .l{font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:var(--dim)}
+.tb-live{color:var(--red);display:flex;align-items:center;gap:6px}
+.tb-live-dot{width:6px;height:6px;background:var(--red);border-radius:50%;animation:pd 1.4s ease infinite}
+@keyframes pd{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+.back-link{color:var(--cyan);text-decoration:none;font-family:'JetBrains Mono';font-size:10px;letter-spacing:1px;border:1px solid rgba(0,229,255,.2);padding:4px 12px;transition:.2s}
+.back-link:hover{background:rgba(0,229,255,.08);border-color:var(--cyan)}
+
+/* NAV */
+.nav{position:sticky;top:56px;z-index:90;background:rgba(8,11,18,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--bd);padding:8px 40px;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.nav a{color:var(--dim);text-decoration:none;font-family:'JetBrains Mono';font-size:9px;letter-spacing:1px;text-transform:uppercase;padding:6px 14px;border:1px solid transparent;transition:.2s;white-space:nowrap}
+.nav a:hover,.nav a.active{color:var(--cyan);border-color:rgba(0,229,255,.3);background:rgba(0,229,255,.04)}
+
+/* SECTIONS */
+.section{padding:60px 40px;border-bottom:1px solid var(--bd);max-width:1400px;margin:0 auto}
+.section:last-child{border-bottom:none}
+.sec-label{font-family:'JetBrains Mono';font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:8px}
+.sec-title{font-family:'Oswald';font-size:32px;font-weight:600;letter-spacing:1px;margin-bottom:24px}
+.sec-title span{color:var(--dim);font-weight:300}
+.sec-subtitle{color:var(--label);font-size:14px;margin-bottom:32px;max-width:800px;line-height:1.7}
+
+/* CARDS */
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin:24px 0}
+.card{background:var(--sf);border:1px solid var(--bd);padding:20px;transition:.2s}
+.card:hover{border-color:rgba(0,229,255,.3)}
+.card-label{font-family:'JetBrains Mono';font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-bottom:8px}
+.card-value{font-family:'Oswald';font-size:28px;font-weight:600;margin-bottom:4px}
+.card-value.red{color:var(--red)}
+.card-value.cyan{color:var(--cyan)}
+.card-value.amber{color:var(--amber)}
+.card-value.green{color:var(--green)}
+.card-sub{font-size:11px;color:var(--dim)}
+.card-bar{height:3px;margin-top:12px;background:var(--bd);border-radius:2px;overflow:hidden}
+.card-bar i{display:block;height:100%;border-radius:2px}
+
+/* EXEC SUMMARY */
+.exec-box{background:linear-gradient(135deg,rgba(255,51,51,.04),rgba(0,229,255,.02));border:1px solid var(--bd);padding:32px;margin:24px 0}
+.exec-box p{color:var(--label);line-height:1.8;margin-bottom:12px}
+.exec-box p:last-child{margin-bottom:0}
+.exec-box strong{color:var(--txt)}
+
+/* SCENARIO TABLE */
+.tbl-wrap{overflow-x:auto;margin:24px 0;scrollbar-width:thin}
+table{width:100%;border-collapse:collapse;font-size:12px;min-width:1100px}
+th{background:var(--sf);font-family:'Oswald';font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--dim);padding:12px 14px;text-align:left;border-bottom:2px solid var(--bd);position:sticky;top:0}
+td{padding:10px 14px;border-bottom:1px solid rgba(26,31,48,.5);vertical-align:top;line-height:1.5}
+tr:hover td{background:rgba(0,229,255,.02)}
+.sev-0{color:var(--green)}.sev-1{color:var(--amber)}.sev-2{color:var(--orange)}.sev-3{color:var(--red)}.sev-4{color:#ff1744}
+.scenario-badge{font-family:'JetBrains Mono';font-size:9px;letter-spacing:1px;padding:2px 8px;border:1px solid;display:inline-block;margin-bottom:4px}
+.sb-0{border-color:var(--green);color:var(--green)}
+.sb-1{border-color:var(--amber);color:var(--amber)}
+.sb-2{border-color:var(--orange);color:var(--orange)}
+.sb-3{border-color:var(--red);color:var(--red)}
+.sb-4{border-color:#ff1744;color:#ff1744}
+
+/* TRANSMISSION MAP */
+.tx-map{display:flex;flex-direction:column;gap:2px;margin:24px 0}
+.tx-row{display:flex;align-items:stretch;gap:2px}
+.tx-node{background:var(--sf);border:1px solid var(--bd);padding:14px 18px;flex:1;min-width:0;position:relative;transition:.2s}
+.tx-node:hover{border-color:rgba(0,229,255,.4);background:var(--sf2)}
+.tx-node .tn-label{font-family:'JetBrains Mono';font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:var(--dim);margin-bottom:4px}
+.tx-node .tn-title{font-family:'Oswald';font-size:14px;font-weight:500;margin-bottom:4px}
+.tx-node .tn-desc{font-size:11px;color:var(--label);line-height:1.5}
+.tx-arrow{display:flex;align-items:center;justify-content:center;color:var(--red);font-size:18px;padding:4px 0;font-family:'JetBrains Mono'}
+.tx-head{background:linear-gradient(90deg,var(--red),var(--orange));color:#fff;text-align:center;padding:10px;font-family:'Oswald';font-size:13px;font-weight:600;letter-spacing:2px;text-transform:uppercase}
+
+/* CPI CHART */
+.cpi-chart{margin:24px 0}
+.cpi-row{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.cpi-label{font-family:'JetBrains Mono';font-size:10px;letter-spacing:1px;width:100px;flex-shrink:0;text-align:right;color:var(--dim)}
+.cpi-bar-wrap{flex:1;height:28px;background:var(--sf);border:1px solid var(--bd);position:relative;overflow:hidden}
+.cpi-bar{height:100%;display:flex;align-items:center;padding-left:8px;font-family:'Oswald';font-size:12px;font-weight:500;color:#fff;transition:width .6s ease}
+.cpi-range{font-family:'JetBrains Mono';font-size:10px;color:var(--dim);width:120px;flex-shrink:0}
+
+/* INDICATORS */
+.ind-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;margin:24px 0}
+.ind-card{background:var(--sf);border:1px solid var(--bd);padding:14px 18px;display:flex;gap:14px;align-items:flex-start;transition:.2s}
+.ind-card:hover{border-color:rgba(255,51,51,.3)}
+.ind-icon{font-size:20px;flex-shrink:0;width:32px;text-align:center}
+.ind-title{font-family:'Oswald';font-size:13px;font-weight:500;margin-bottom:2px}
+.ind-desc{font-size:11px;color:var(--dim);line-height:1.5}
+
+/* POLICY MENU */
+.pol-timeline{position:relative;padding-left:40px;margin:24px 0}
+.pol-timeline::before{content:'';position:absolute;left:15px;top:0;bottom:0;width:2px;background:var(--bd)}
+.pol-phase{margin-bottom:32px}
+.pol-dot{position:absolute;left:10px;width:12px;height:12px;border-radius:50%;border:2px solid;background:var(--bg)}
+.pol-dot.p1{border-color:var(--red)}.pol-dot.p2{border-color:var(--amber)}.pol-dot.p3{border-color:var(--orange)}
+.pol-phase-label{font-family:'Oswald';font-size:16px;font-weight:600;margin-bottom:4px}
+.pol-phase-time{font-family:'JetBrains Mono';font-size:9px;letter-spacing:1px;color:var(--dim);margin-bottom:12px}
+.pol-items{list-style:none}
+.pol-items li{padding:6px 0 6px 16px;border-left:2px solid var(--bd);margin-left:-40px;padding-left:56px;font-size:12px;color:var(--label);line-height:1.6}
+.pol-items li strong{color:var(--txt)}
+
+/* RED TEAM */
+.rt-box{background:rgba(255,51,51,.03);border:1px solid rgba(255,51,51,.15);padding:24px;margin:12px 0}
+.rt-box h4{font-family:'Oswald';font-size:14px;font-weight:500;color:var(--red);margin-bottom:8px}
+.rt-box p{color:var(--label);font-size:12px;line-height:1.7;margin-bottom:8px}
+
+/* SLIDES */
+.slide-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin:24px 0}
+.slide-card{background:var(--sf);border:1px solid var(--bd);padding:16px;counter-increment:slide}
+.slide-card::before{content:'SLIDE ' counter(slide);font-family:'JetBrains Mono';font-size:8px;letter-spacing:2px;color:var(--dim);display:block;margin-bottom:8px}
+.slide-card h4{font-family:'Oswald';font-size:14px;font-weight:500;margin-bottom:6px}
+.slide-card p{font-size:11px;color:var(--dim);line-height:1.5}
+.slide-grid{counter-reset:slide}
+
+/* ASSUMPTIONS */
+.assumption-list{list-style:none;margin:24px 0}
+.assumption-list li{padding:10px 16px;border-left:3px solid var(--bd);margin-bottom:6px;font-size:12px;color:var(--label);line-height:1.6;background:var(--sf)}
+.assumption-list li strong{color:var(--txt)}
+
+/* CONFIDENCE */
+.conf-row{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+.conf-label{width:120px;font-family:'JetBrains Mono';font-size:10px;color:var(--dim)}
+.conf-bar{flex:1;height:8px;background:var(--sf);border:1px solid var(--bd);overflow:hidden}
+.conf-fill{height:100%}
+.conf-pct{font-family:'Oswald';font-size:12px;width:40px;text-align:right}
+
+/* SOURCE */
+.src-list{margin:24px 0;font-size:11px;color:var(--dim);line-height:2}
+.src-list a{color:var(--cyan);text-decoration:none;border-bottom:1px solid rgba(0,229,255,.2)}
+.src-list a:hover{border-color:var(--cyan)}
+
+/* FOOTER */
+.footer{text-align:center;padding:40px;font-family:'JetBrains Mono';font-size:9px;color:var(--dim);letter-spacing:1px;border-top:1px solid var(--bd)}
+
+/* DOWNLOAD BTN */
+.dl-btn{background:transparent;border:1px solid var(--cyan);color:var(--cyan);font-family:'JetBrains Mono';font-size:9px;letter-spacing:1.5px;padding:5px 14px;cursor:pointer;text-transform:uppercase;transition:.2s;white-space:nowrap}
+.dl-btn:hover{background:rgba(0,229,255,.1)}
+.gen-btn{background:transparent;border:1px solid var(--amber);color:var(--amber);font-family:'JetBrains Mono';font-size:9px;letter-spacing:1.5px;padding:5px 14px;cursor:pointer;text-transform:uppercase;transition:.2s;white-space:nowrap}
+.gen-btn:hover{background:rgba(255,171,0,.1)}
+
+/* AI PANEL */
+.ai-panel{display:none;position:fixed;top:0;right:0;bottom:0;width:420px;background:var(--sf);border-left:1px solid var(--bd);z-index:200;overflow-y:auto;box-shadow:-8px 0 40px rgba(0,0,0,.5)}
+.ai-panel.open{display:flex;flex-direction:column}
+.ai-header{padding:20px;border-bottom:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between}
+.ai-header h3{font-family:'Oswald';font-size:16px;font-weight:500}
+.ai-close{background:none;border:1px solid var(--bd);color:var(--dim);width:28px;height:28px;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:.2s}
+.ai-close:hover{border-color:var(--red);color:var(--red)}
+.ai-body{padding:20px;flex:1;overflow-y:auto}
+.ai-field{margin-bottom:16px}
+.ai-field label{display:block;font-family:'JetBrains Mono';font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--dim);margin-bottom:6px}
+.ai-field input,.ai-field select,.ai-field textarea{width:100%;background:var(--bg);border:1px solid var(--bd);color:var(--txt);font-family:'JetBrains Mono';font-size:11px;padding:10px 12px;outline:none;transition:.2s}
+.ai-field input:focus,.ai-field select:focus,.ai-field textarea:focus{border-color:var(--cyan)}
+.ai-field textarea{min-height:80px;resize:vertical}
+.ai-field select{cursor:pointer}
+.ai-field select option{background:var(--bg)}
+.ai-run{width:100%;padding:12px;background:var(--amber);color:#000;font-family:'Oswald';font-size:14px;font-weight:600;letter-spacing:2px;border:none;cursor:pointer;text-transform:uppercase;transition:.2s;margin-top:8px}
+.ai-run:hover{background:#ffc107}
+.ai-run:disabled{opacity:.5;cursor:not-allowed}
+.ai-status{font-family:'JetBrains Mono';font-size:10px;color:var(--dim);margin-top:12px;min-height:20px}
+.ai-status.error{color:var(--red)}
+.ai-status.ok{color:var(--green)}
+.ai-saved{margin-top:16px;border-top:1px solid var(--bd);padding-top:16px}
+.ai-saved h4{font-family:'Oswald';font-size:13px;color:var(--dim);margin-bottom:8px}
+.ai-saved-item{display:flex;justify-content:space-between;align-items:center;padding:8px 10px;border:1px solid var(--bd);margin-bottom:4px;font-size:11px;cursor:pointer;transition:.2s}
+.ai-saved-item:hover{border-color:var(--cyan);background:rgba(0,229,255,.03)}
+.ai-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:190}
+.ai-overlay.open{display:block}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+.topbar,.nav,.section{padding-left:16px;padding-right:16px}
+.tb-right{display:none}
+.sec-title{font-size:24px}
+.card-grid{grid-template-columns:1fr}
+.tx-row{flex-direction:column}
+.ai-panel{width:100%}
+}
+
+/* PRINT STYLES */
+@media print{
+*{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;color-adjust:exact!important}
+body{background:#04060a!important;font-size:10px}
+.topbar{position:relative!important;background:var(--sf)!important;-webkit-backdrop-filter:none!important}
+.nav,.dl-btn,.gen-btn,.back-link,.ai-panel,.ai-overlay,.tb-live{display:none!important}
+.section{padding:30px 20px!important;break-inside:avoid;page-break-inside:avoid}
+.exec-box,.rt-box,.card,.ind-card,.slide-card,.tx-node{break-inside:avoid;page-break-inside:avoid}
+table{font-size:9px!important}
+th,td{padding:6px 8px!important}
+.tbl-wrap{overflow:visible!important}
+table{min-width:unset!important}
+.sec-title{font-size:24px!important}
+.card-value{font-size:22px!important}
+.footer{break-before:page}
+.pol-timeline{page-break-inside:avoid}
+@page{size:A3 portrait;margin:10mm}
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="tb-left">
+    <div class="tb-badge">CRISIS BRIEF</div>
+    <div class="tb-title"><b>HORMUZ</b> SCENARIO ANALYSIS</div>
+  </div>
+  <div class="tb-right">
+    <div class="tb-stat"><div class="v" style="color:var(--red)">$90+</div><div class="l">Brent $/BBL</div></div>
+    <div class="tb-stat"><div class="v">280</div><div class="l">PKR/USD</div></div>
+    <div class="tb-stat"><div class="v">7.0%</div><div class="l">CPI Feb 26</div></div>
+    <div class="tb-stat"><div class="v">10.5%</div><div class="l">SBP Rate</div></div>
+    <button class="dl-btn" onclick="window.print()">⤓ Download PDF</button>
+    <button class="gen-btn" onclick="openAI()">⚡ Generate Fresh</button>
+    <div class="tb-live"><div class="tb-live-dot"></div>LIVE CRISIS</div>
+    <a href="index.html" class="back-link">← SITUATION ROOM</a>
+  </div>
+</div>
+
+<!-- NAV -->
+<div class="nav" id="nav">
+  <a href="#exec" class="active">Executive Summary</a>
+  <a href="#baseline">Baseline</a>
+  <a href="#scenarios">Scenarios</a>
+  <a href="#transmission">Transmission Map</a>
+  <a href="#cpi">CPI Impact</a>
+  <a href="#indicators">Early Warning</a>
+  <a href="#policy">Policy Response</a>
+  <a href="#slides">Leadership Brief</a>
+  <a href="#redteam">Red Team</a>
+  <a href="#sources">Sources</a>
+</div>
+
+<!-- A. EXECUTIVE SUMMARY -->
+<div class="section" id="exec">
+  <div class="sec-label">Section A</div>
+  <div class="sec-title">Executive Summary</div>
+  <div class="sec-subtitle">Decision-grade assessment for the Prime Minister, Finance Minister, SBP Governor, and NSC. Prepared 7 March 2026.</div>
+
+  <div class="exec-box">
+    <p><strong>Situation.</strong> On 28 February 2026, the United States and Israel conducted joint strikes on Iran, including the killing of Iran's supreme leader. Iran retaliated with missile and drone attacks. The IRGC warned against vessel passage through the Strait of Hormuz. Tanker traffic dropped approximately 70% within 48 hours. Brent crude breached $90/bbl for the first time in two years. Major shipping lines (Maersk, MSC, Hapag-Lloyd, CMA CGM) have suspended Hormuz transit.</p>
+    <p><strong>Pakistan Exposure.</strong> Pakistan imports ~300,000 bbl/day of crude, with over 94% sourced from Gulf states (UAE + Saudi Arabia) via the Strait of Hormuz. Pakistan also receives 9 LNG cargoes/month from Qatar under long-term contracts priced at 10.2–13.37% of Brent. The oil import bill was $10.71 billion in the first 8 months of FY25. Total energy imports account for ~30% of the import bill.</p>
+    <p><strong>Central Assessment.</strong> Under the current disruption (Scenario 1–2 range), Pakistan faces an additional $2–5 billion annual import bill, CPI inflation rising from 7% to 9–12% within 3 months, rupee depreciation of 3–8%, and a current account deterioration of $1.5–4 billion. If closure extends beyond 1 month (Scenario 3–4), inflation could spike to 14–20%, FX reserves could fall below $12 billion, and Pakistan's IMF program could face stress testing.</p>
+    <p><strong>Critical Window.</strong> The next 2–4 weeks are decisive. Policy actions taken within 72 hours on strategic reserves, FX intervention, and fiscal buffers will determine whether Pakistan manages an orderly adjustment or faces a 2022-style external account crisis.</p>
+  </div>
+</div>
+
+<!-- BASELINE -->
+<div class="section" id="baseline">
+  <div class="sec-label">Baseline Data</div>
+  <div class="sec-title">Pakistan Economic Snapshot <span>— Pre-Crisis Baseline</span></div>
+  <div class="sec-subtitle">All figures as of late February / early March 2026 — the reference point against which all scenario impacts are measured.</div>
+
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-label">Brent Crude Oil</div>
+      <div class="card-value red">$85–93</div>
+      <div class="card-sub">Per barrel. Volatile. Hit $90+ on 6 Mar. Pre-crisis baseline was ~$75.</div>
+      <div class="card-bar"><i style="width:75%;background:var(--red)"></i></div>
+    </div>
+    <div class="card">
+      <div class="card-label">Headline CPI (YoY)</div>
+      <div class="card-value amber">7.0%</div>
+      <div class="card-sub">February 2026. Urban 6.8%, Rural 7.3%. 16-month high.</div>
+      <div class="card-bar"><i style="width:35%;background:var(--amber)"></i></div>
+    </div>
+    <div class="card">
+      <div class="card-label">Core Inflation</div>
+      <div class="card-value">7.1%</div>
+      <div class="card-sub">Urban NFNE 7.1%. Rural 8.3%. Trimmed mean urban 5.1%.</div>
+      <div class="card-bar"><i style="width:36%;background:var(--amber)"></i></div>
+    </div>
+    <div class="card">
+      <div class="card-label">SBP Policy Rate</div>
+      <div class="card-value cyan">10.5%</div>
+      <div class="card-sub">Held. MPC meeting 9 Mar — 10/10 analysts expect hold. Rate cuts paused.</div>
+      <div class="card-bar"><i style="width:53%;background:var(--cyan)"></i></div>
+    </div>
+    <div class="card">
+      <div class="card-label">PKR/USD Exchange Rate</div>
+      <div class="card-value">280</div>
+      <div class="card-sub">Relatively stable. 0.02% depreciation past month.</div>
+      <div class="card-bar"><i style="width:45%;background:var(--green)"></i></div>
+    </div>
+    <div class="card">
+      <div class="card-label">FX Reserves (SBP)</div>
+      <div class="card-value green">$16.2B</div>
+      <div class="card-sub">Target $18B by Jun, $20B by Dec 2026. Now at risk.</div>
+      <div class="card-bar"><i style="width:54%;background:var(--green)"></i></div>
+    </div>
+    <div class="card">
+      <div class="card-label">Current Account (7M FY26)</div>
+      <div class="card-value amber">-$1.1B</div>
+      <div class="card-sub">Deficit widened on trade gap. Exports down, imports up.</div>
+      <div class="card-bar"><i style="width:25%;background:var(--amber)"></i></div>
+    </div>
+    <div class="card">
+      <div class="card-label">Oil Import Bill (8M FY25)</div>
+      <div class="card-value red">$10.71B</div>
+      <div class="card-sub">~$16B annualized. 94%+ from Gulf via Hormuz.</div>
+      <div class="card-bar"><i style="width:67%;background:var(--red)"></i></div>
+    </div>
+    <div class="card">
+      <div class="card-label">LNG Contracts (Qatar)</div>
+      <div class="card-value">9/mo</div>
+      <div class="card-sub">5 cargoes @13.37% Brent + 4 @10.2% Brent. All via Hormuz.</div>
+      <div class="card-bar"><i style="width:60%;background:var(--orange)"></i></div>
+    </div>
+    <div class="card">
+      <div class="card-label">Crude Import Dependency</div>
+      <div class="card-value red">300K</div>
+      <div class="card-sub">Barrels/day imported. Domestic production only ~70K bbl/day.</div>
+      <div class="card-bar"><i style="width:81%;background:var(--red)"></i></div>
+    </div>
+    <div class="card">
+      <div class="card-label">Remittances (FY26 proj.)</div>
+      <div class="card-value green">$42B</div>
+      <div class="card-sub">Large Gulf worker base provides buffer. ~60% from GCC.</div>
+      <div class="card-bar"><i style="width:70%;background:var(--green)"></i></div>
+    </div>
+    <div class="card">
+      <div class="card-label">Circular Debt</div>
+      <div class="card-value red">Rs 2.7T</div>
+      <div class="card-sub">Trillion. Limits govt ability to absorb energy price shocks.</div>
+      <div class="card-bar"><i style="width:85%;background:var(--red)"></i></div>
+    </div>
+  </div>
+</div>
+
+<!-- B. SCENARIO COMPARISON TABLE -->
+<div class="section" id="scenarios">
+  <div class="sec-label">Section B</div>
+  <div class="sec-title">Scenario Framework <span>— Five Paths</span></div>
+  <div class="sec-subtitle">Each scenario models a different intensity and duration of Hormuz disruption. Ranges reflect genuine uncertainty — not false precision. Confidence levels indicate analytical certainty of the scenario materializing.</div>
+
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th style="width:130px">Indicator</th>
+          <th><span class="scenario-badge sb-0">S0</span><br>Risk Premium Only</th>
+          <th><span class="scenario-badge sb-1">S1</span><br>Partial 2–4 Weeks</th>
+          <th><span class="scenario-badge sb-2">S2</span><br>Full Close 2 Weeks</th>
+          <th><span class="scenario-badge sb-3">S3</span><br>Full Close 1–3 Months</th>
+          <th><span class="scenario-badge sb-4">S4</span><br>Prolonged Escalation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Brent $/bbl</strong></td>
+          <td class="sev-0">$85–95</td>
+          <td class="sev-1">$95–115</td>
+          <td class="sev-2">$110–130</td>
+          <td class="sev-3">$120–160</td>
+          <td class="sev-4">$150–200+</td>
+        </tr>
+        <tr>
+          <td><strong>LNG Spot $/MMBtu</strong></td>
+          <td class="sev-0">$13–16</td>
+          <td class="sev-1">$18–25</td>
+          <td class="sev-2">$25–40</td>
+          <td class="sev-3">$35–60</td>
+          <td class="sev-4">$50–80+</td>
+        </tr>
+        <tr>
+          <td><strong>Shipping / Insurance</strong></td>
+          <td>+10–20% freight<br>+50–100% war risk</td>
+          <td>+30–60% freight<br>+200–400% war risk</td>
+          <td>+80–150% freight<br>Insurance suspended</td>
+          <td>+150–300% freight<br>Rerouting via Suez/Cape</td>
+          <td>+300%+ freight<br>Force majeure clauses</td>
+        </tr>
+        <tr>
+          <td><strong>Pak Import Bill (Addl Annual)</strong></td>
+          <td class="sev-0">+$1–2B</td>
+          <td class="sev-1">+$2–4B</td>
+          <td class="sev-2">+$4–7B</td>
+          <td class="sev-3">+$7–14B</td>
+          <td class="sev-4">+$12–20B+</td>
+        </tr>
+        <tr>
+          <td><strong>PKR/USD</strong></td>
+          <td class="sev-0">280–288</td>
+          <td class="sev-1">285–300</td>
+          <td class="sev-2">295–315</td>
+          <td class="sev-3">310–345</td>
+          <td class="sev-4">340–400+</td>
+        </tr>
+        <tr>
+          <td><strong>Fuel Pass-Through</strong></td>
+          <td>Rs 5–10/L petrol</td>
+          <td>Rs 15–30/L petrol</td>
+          <td>Rs 30–50/L petrol</td>
+          <td>Rs 45–80/L petrol</td>
+          <td>Rs 80–120+/L or rationing</td>
+        </tr>
+        <tr>
+          <td><strong>Electricity Tariff</strong></td>
+          <td>+Rs 1–2/kWh FCA</td>
+          <td>+Rs 2–5/kWh FCA</td>
+          <td>+Rs 5–8/kWh FCA</td>
+          <td>+Rs 8–15/kWh FCA</td>
+          <td>Load-shedding returns</td>
+        </tr>
+        <tr>
+          <td><strong>Food Inflation</strong></td>
+          <td>+0.5–1 ppt</td>
+          <td>+1–3 ppt</td>
+          <td>+2–5 ppt</td>
+          <td>+4–8 ppt</td>
+          <td>+8–15 ppt (shortage risk)</td>
+        </tr>
+        <tr>
+          <td><strong>Fertilizer (DAP)</strong></td>
+          <td>+5–10% price</td>
+          <td>+10–20% price</td>
+          <td>+20–35% price</td>
+          <td>+30–50% + supply gaps</td>
+          <td>Severe shortage, rationing</td>
+        </tr>
+        <tr>
+          <td><strong>Headline CPI (3-mo)</strong></td>
+          <td class="sev-0">7.5–9%</td>
+          <td class="sev-1">9–12%</td>
+          <td class="sev-2">11–15%</td>
+          <td class="sev-3">14–20%</td>
+          <td class="sev-4">18–28%+</td>
+        </tr>
+        <tr>
+          <td><strong>Core Inflation (3-mo)</strong></td>
+          <td>7–8%</td>
+          <td>8–10%</td>
+          <td>9–12%</td>
+          <td>11–16%</td>
+          <td>15–22%</td>
+        </tr>
+        <tr>
+          <td><strong>Current Account</strong></td>
+          <td>-$2–3B FY26</td>
+          <td>-$3–5B FY26</td>
+          <td>-$5–8B FY26</td>
+          <td>-$8–14B FY26</td>
+          <td>-$14B+ / BoP crisis</td>
+        </tr>
+        <tr>
+          <td><strong>FX Reserves Risk</strong></td>
+          <td class="sev-0">$15–16B</td>
+          <td class="sev-1">$13–15B</td>
+          <td class="sev-2">$11–14B</td>
+          <td class="sev-3">$8–12B</td>
+          <td class="sev-4">Below $8B — critical</td>
+        </tr>
+        <tr>
+          <td><strong>Fiscal Cost (if cushioned)</strong></td>
+          <td>Rs 50–100B</td>
+          <td>Rs 100–250B</td>
+          <td>Rs 250–500B</td>
+          <td>Rs 500B–1.2T</td>
+          <td>Rs 1T+ / IMF breach</td>
+        </tr>
+        <tr>
+          <td><strong>SBP Response</strong></td>
+          <td>Hold at 10.5%</td>
+          <td>Hold; forward guidance</td>
+          <td>Possible +50–100bps</td>
+          <td>+100–300bps hike cycle</td>
+          <td>Emergency hike to 14–17%</td>
+        </tr>
+        <tr>
+          <td><strong>Social Risk</strong></td>
+          <td class="sev-0">Low</td>
+          <td class="sev-1">Moderate — transport protests</td>
+          <td class="sev-2">High — fuel/food protests</td>
+          <td class="sev-3">Severe — urban unrest</td>
+          <td class="sev-4">Critical — stability risk</td>
+        </tr>
+        <tr>
+          <td><strong>Confidence</strong></td>
+          <td>85% — current state</td>
+          <td>50–60%</td>
+          <td>25–35%</td>
+          <td>10–20%</td>
+          <td>5–10%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- C. TRANSMISSION MAP -->
+<div class="section" id="transmission">
+  <div class="sec-label">Section C</div>
+  <div class="sec-title">Inflation Transmission Map <span>— Pakistan-Specific</span></div>
+  <div class="sec-subtitle">Seven channels through which Hormuz disruption reaches Pakistani consumers and the fiscal accounts. First-round effects hit within days; second-round effects build over 1–6 months.</div>
+
+  <div class="tx-map">
+    <div class="tx-head">HORMUZ DISRUPTION — TRIGGER EVENT</div>
+    <div class="tx-arrow">▼ ▼ ▼ ▼ ▼ ▼ ▼</div>
+
+    <div class="tx-row">
+      <div class="tx-node">
+        <div class="tn-label">Channel 1</div>
+        <div class="tn-title">Crude Oil & Petroleum</div>
+        <div class="tn-desc"><strong>Direct.</strong> 300K bbl/day imports, 94% from Gulf via Hormuz. Brent spike → OGRA fortnightly price revision → petrol/diesel +Rs 15–80/L depending on scenario. <strong>Pass-through: 2–15 days.</strong></div>
+      </div>
+      <div class="tx-node">
+        <div class="tn-label">Channel 2</div>
+        <div class="tn-title">LNG & Power Generation</div>
+        <div class="tn-desc"><strong>Direct.</strong> 9 Qatar LNG cargoes/month via Hormuz. Prices at 10.2–13.37% of Brent. At $130 Brent → LNG contract price doubles. RLNG-based electricity cost surges → FCA adjustment. <strong>Pass-through: 1–4 weeks.</strong></div>
+      </div>
+      <div class="tx-node">
+        <div class="tn-label">Channel 3</div>
+        <div class="tn-title">Freight & Insurance</div>
+        <div class="tn-desc"><strong>Direct.</strong> War risk insurance from 0.05% to 1–3% of cargo value. Container rerouting via Cape of Good Hope adds 10–14 days. All imports affected, not just energy. <strong>Pass-through: 1–6 weeks.</strong></div>
+      </div>
+    </div>
+
+    <div class="tx-arrow">▼ ▼ ▼</div>
+
+    <div class="tx-row">
+      <div class="tx-node">
+        <div class="tn-label">Channel 4</div>
+        <div class="tn-title">Exchange Rate</div>
+        <div class="tn-desc"><strong>Amplifier.</strong> Higher import bill → FX demand surge → PKR depreciation → all imports become more expensive in rupee terms. FX reserves drawdown weakens SBP intervention capacity. 10% PKR fall adds ~0.8–1.2 ppt to CPI.</div>
+      </div>
+      <div class="tx-node">
+        <div class="tn-label">Channel 5</div>
+        <div class="tn-title">Fuel & Utility Pricing</div>
+        <div class="tn-desc"><strong>First-round CPI.</strong> Petrol/diesel → transport CPI (7.2% weight). Electricity/gas → housing CPI (23.6% weight). Combined energy weight in CPI basket: ~15–18%. Direct CPI pass-through within 1 month.</div>
+      </div>
+    </div>
+
+    <div class="tx-arrow">▼ ▼</div>
+
+    <div class="tx-row">
+      <div class="tx-node">
+        <div class="tn-label">Channel 6</div>
+        <div class="tn-title">Food & Fertilizer</div>
+        <div class="tn-desc"><strong>Second-round.</strong> Transport cost → food distribution cost (+3–8%). DAP fertilizer (imported) price surge → Rabi/Kharif input costs rise → food prices with 2–6 month lag. Pakistan's food CPI weight: ~35%. Wheat, edible oil particularly vulnerable.</div>
+      </div>
+      <div class="tx-node">
+        <div class="tn-label">Channel 7</div>
+        <div class="tn-title">Expectations & Second-Round</div>
+        <div class="tn-desc"><strong>Second-round.</strong> Wage-price spiral if expectations de-anchor. Core inflation rises as businesses pass through costs. SBP credibility tested. Risk of 2022 repeat: inflation expectations jumped from 9% to 25% in 3 months. Critical to manage narrative early.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- D. CPI IMPACT RANGES -->
+<div class="section" id="cpi">
+  <div class="sec-label">Section D</div>
+  <div class="sec-title">CPI Impact Ranges <span>— Headline Inflation</span></div>
+  <div class="sec-subtitle">Estimated headline CPI (YoY %) under each scenario at 1-month, 3-month, and 6-month horizons. Current baseline: 7.0%.</div>
+
+  <h3 style="font-family:Oswald;font-size:16px;margin:24px 0 12px;color:var(--dim)">AT 1 MONTH</h3>
+  <div class="cpi-chart">
+    <div class="cpi-row"><div class="cpi-label">BASELINE</div><div class="cpi-bar-wrap"><div class="cpi-bar" style="width:28%;background:var(--dim)">7.0%</div></div><div class="cpi-range">7.0%</div></div>
+    <div class="cpi-row"><div class="cpi-label sev-0">S0</div><div class="cpi-bar-wrap"><div class="cpi-bar" style="width:33%;background:var(--green)">7.5–8.5%</div></div><div class="cpi-range">+0.5–1.5 ppt</div></div>
+    <div class="cpi-row"><div class="cpi-label sev-1">S1</div><div class="cpi-bar-wrap"><div class="cpi-bar" style="width:38%;background:var(--amber)">8.5–10%</div></div><div class="cpi-range">+1.5–3 ppt</div></div>
+    <div class="cpi-row"><div class="cpi-label sev-2">S2</div><div class="cpi-bar-wrap"><div class="cpi-bar" style="width:44%;background:var(--orange)">9–11%</div></div><div class="cpi-range">+2–4 ppt</div></div>
+    <div class="cpi-row"><div class="cpi-label sev-3">S3</div><div class="cpi-bar-wrap"><div class="cpi-bar" style="width:52%;background:var(--red)">10–13%</div></div><div class="cpi-range">+3–6 ppt</div></div>
+    <div class="cpi-row"><div class="cpi-label sev-4">S4</div><div class="cpi-bar-wrap"><div class="cpi-bar" style="width:60%;background:#ff1744">12–16%</div></div><div class="cpi-range">+5–9 ppt</div></div>
+  </div>
+
+  <h3 style="font-family:Oswald;font-size:16px;margin:24px 0 12px;color:var(--dim)">AT 3 MONTHS</h3>
+  <div class="cpi-chart">
+    <div class="cpi-row"><div class="cpi-label sev-0">S0</div><div class="cpi-bar-wrap"><div class="cpi-bar" style="width:36%;background:var(--green)">7.5–9%</div></div><div class="cpi-range">+0.5–2 ppt</div></div>
+    <div class="cpi-row"><div class="cpi-label sev-1">S1</div><div class="cpi-bar-wrap"><div class="cpi-bar" style="width:48%;background:var(--amber)">9–12%</div></div><div class="cpi-range">+2–5 ppt</div></div>
+    <div class="cpi-row"><div class="cpi-label sev-2">S2</div><div class="cpi-bar-wrap"><div class="cpi-bar" style="width:58%;background:var(--orange)">11–15%</div></div><div class="cpi-range">+4–8 ppt</div></div>
+    <div class="cpi-row"><div class="cpi-label sev-3">S3</div><div class="cpi-bar-wrap"><div class="cpi-bar" style="width:72%;background:var(--red)">14–20%</div></div><div class="cpi-range">+7–13 ppt</div></div>
+    <div class="cpi-row"><div class="cpi-label sev-4">S4</div><div class="cpi-bar-wrap"><div class="cpi-bar" style="width:90%;background:#ff1744">18–28%</div></div><div class="cpi-range">+11–21 ppt</div></div>
+  </div>
+
+  <h3 style="font-family:Oswald;font-size:16px;margin:24px 0 12px;color:var(--dim)">AT 6 MONTHS</h3>
+  <div class="cpi-chart">
+    <div class="cpi-row"><div class="cpi-label sev-0">S0</div><div class="cpi-bar-wrap"><div class="cpi-bar" style="width:32%;background:var(--green)">7–8.5%</div></div><div class="cpi-range">Fading if Brent normalizes</div></div>
+    <div class="cpi-row"><div class="cpi-label sev-1">S1</div><div class="cpi-bar-wrap"><div class="cpi-bar" style="width:40%;background:var(--amber)">8–10%</div></div><div class="cpi-range">Second-round lingering</div></div>
+    <div class="cpi-row"><div class="cpi-label sev-2">S2</div><div class="cpi-bar-wrap"><div class="cpi-bar" style="width:50%;background:var(--orange)">10–14%</div></div><div class="cpi-range">Food + expectations lag</div></div>
+    <div class="cpi-row"><div class="cpi-label sev-3">S3</div><div class="cpi-bar-wrap"><div class="cpi-bar" style="width:65%;background:var(--red)">13–18%</div></div><div class="cpi-range">Structural reset</div></div>
+    <div class="cpi-row"><div class="cpi-label sev-4">S4</div><div class="cpi-bar-wrap"><div class="cpi-bar" style="width:82%;background:#ff1744">16–25%+</div></div><div class="cpi-range">2022-level crisis</div></div>
+  </div>
+</div>
+
+<!-- E. EARLY WARNING INDICATORS -->
+<div class="section" id="indicators">
+  <div class="sec-label">Section E</div>
+  <div class="sec-title">Early Warning Indicators <span>— Monitor Daily</span></div>
+  <div class="sec-subtitle">The following indicators should be tracked by the crisis cell on a daily basis to determine which scenario is materializing and when to escalate policy response.</div>
+
+  <div class="ind-grid">
+    <div class="ind-card">
+      <div class="ind-icon">🛢️</div>
+      <div><div class="ind-title">Brent Crude Futures</div><div class="ind-desc"><strong>Red line:</strong> sustained above $110. Track front-month and 3-month spread for backwardation. Source: ICE, CME.</div></div>
+    </div>
+    <div class="ind-card">
+      <div class="ind-icon">🚢</div>
+      <div><div class="ind-title">Hormuz Vessel Transits</div><div class="ind-desc"><strong>Red line:</strong> below 30% of normal (~6 transits/day vs 20). Track via MarineTraffic AIS data, Lloyd's List intelligence.</div></div>
+    </div>
+    <div class="ind-card">
+      <div class="ind-icon">📊</div>
+      <div><div class="ind-title">JKM LNG Spot Price</div><div class="ind-desc"><strong>Red line:</strong> above $30/MMBtu (was $13–14 pre-crisis). Track Platts JKM benchmark daily. Qatar cargo pricing adjustments.</div></div>
+    </div>
+    <div class="ind-card">
+      <div class="ind-icon">💱</div>
+      <div><div class="ind-title">PKR/USD Interbank + Kerb</div><div class="ind-desc"><strong>Red line:</strong> interbank above 295 or kerb premium exceeds 3%. Track SBP daily reference rate, hawala spread.</div></div>
+    </div>
+    <div class="ind-card">
+      <div class="ind-icon">🏦</div>
+      <div><div class="ind-title">SBP FX Reserves (Weekly)</div><div class="ind-desc"><strong>Red line:</strong> weekly drawdown exceeding $500M or total falling below $14B. Track SBP Thursday release.</div></div>
+    </div>
+    <div class="ind-card">
+      <div class="ind-icon">📦</div>
+      <div><div class="ind-title">Freightos Baltic Index</div><div class="ind-desc"><strong>Red line:</strong> container freight to Karachi up 100%+. Track FBX index, Karachi port congestion reports.</div></div>
+    </div>
+    <div class="ind-card">
+      <div class="ind-icon">⛽</div>
+      <div><div class="ind-title">OGRA Fuel Price Notifications</div><div class="ind-desc"><strong>Red line:</strong> single fortnightly revision exceeding Rs 20/L. Track ex-depot prices, PMG/HSD differentials.</div></div>
+    </div>
+    <div class="ind-card">
+      <div class="ind-icon">🌾</div>
+      <div><div class="ind-title">Wholesale Food Prices (PBS)</div><div class="ind-desc"><strong>Red line:</strong> weekly SPI food basket up >2%. Track wheat flour, cooking oil, sugar, pulses. Karachi & Lahore wholesale mandis.</div></div>
+    </div>
+    <div class="ind-card">
+      <div class="ind-icon">🛡️</div>
+      <div><div class="ind-title">War Risk Insurance Rates</div><div class="ind-desc"><strong>Red line:</strong> Lloyds Joint War Committee adds Persian Gulf to high-risk list. Rates exceeding 1% of hull value.</div></div>
+    </div>
+    <div class="ind-card">
+      <div class="ind-icon">📡</div>
+      <div><div class="ind-title">Diplomatic / Military Signals</div><div class="ind-desc">Iran IRGC statements, US 5th Fleet movements, GCC mediation efforts, Trump administration public statements. NSC to monitor.</div></div>
+    </div>
+    <div class="ind-card">
+      <div class="ind-icon">💰</div>
+      <div><div class="ind-title">Pakistan CDS Spread</div><div class="ind-desc"><strong>Red line:</strong> 5Y CDS above 800bps. Track via Bloomberg/Reuters. Indicates market perception of sovereign risk.</div></div>
+    </div>
+    <div class="ind-card">
+      <div class="ind-icon">🏭</div>
+      <div><div class="ind-title">Refinery Run Rates</div><div class="ind-desc"><strong>Red line:</strong> PRL, ARL, NRL run rates below 60%. Monitor crude inventory days of cover at Karachi/Hub ports.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- F. POLICY RESPONSE MENU -->
+<div class="section" id="policy">
+  <div class="sec-label">Section F</div>
+  <div class="sec-title">Policy Response Menu</div>
+  <div class="sec-subtitle">Three-tier response framework for coordinated government action. Each tier activates as crisis indicators cross defined thresholds.</div>
+
+  <div class="pol-timeline">
+    <div class="pol-phase">
+      <div class="pol-dot p1" style="margin-top:4px"></div>
+      <div class="pol-phase-label" style="color:var(--red)">Tier 1 — Immediate Actions (Within 72 Hours)</div>
+      <div class="pol-phase-time">ACTIVATE WHEN: Brent &gt; $90 sustained or Hormuz transits &lt; 50% of normal</div>
+      <ul class="pol-items">
+        <li><strong>Activate National Energy Crisis Cell</strong> under PM Secretariat. Daily briefings with SBP, Petroleum Division, MoF, OGRA, Power Division.</li>
+        <li><strong>Assess strategic petroleum reserve</strong> status (currently ~20 days cover). Instruct PSO/PARCO to maximize storage utilization.</li>
+        <li><strong>SBP FX intervention protocol:</strong> Authorize measured FX sales to prevent disorderly PKR depreciation. Signal commitment to orderly market.</li>
+        <li><strong>Engage Saudi Arabia and UAE bilaterally</strong> for emergency crude supply via Red Sea ports (Yanbu, Jeddah) bypassing Hormuz. Saudi ARAMCO has Red Sea export capacity of 5M bbl/day.</li>
+        <li><strong>Contact IMF mission chief</strong> to brief on force majeure risks. Seek flexibility on fiscal targets if oil exceeds $110.</li>
+        <li><strong>Defer OGRA fuel price hike</strong> by 48–72 hours to prevent panic buying. Announce measured, not full, pass-through.</li>
+        <li><strong>Issue NDMA advisory</strong> on fuel conservation measures. Prepare contingency for transport sector disruption.</li>
+        <li><strong>Instruct NEPRA</strong> to model FCA scenarios and prepare communication strategy for electricity tariff adjustments.</li>
+      </ul>
+    </div>
+
+    <div class="pol-phase">
+      <div class="pol-dot p2" style="margin-top:4px"></div>
+      <div class="pol-phase-label" style="color:var(--amber)">Tier 2 — Near-Term Actions (Within 2 Weeks)</div>
+      <div class="pol-phase-time">ACTIVATE WHEN: Brent &gt; $110 or Hormuz closure confirmed &gt; 48 hours</div>
+      <ul class="pol-items">
+        <li><strong>Negotiate emergency oil swap</strong> with Saudi Arabia: crude via Red Sea tanker to Karachi on deferred payment (G2G). Pakistan has precedent from 2023 Saudi facility.</li>
+        <li><strong>Activate partial fuel subsidy</strong> for transport sector only (Rs 15–25/L cap on diesel). Estimated cost Rs 8–12B/month.</li>
+        <li><strong>SBP to halt rate-cut expectations:</strong> Issue emergency forward guidance. If Brent >$120, prepare 50–100bps emergency hike.</li>
+        <li><strong>Accelerate non-Gulf crude sourcing:</strong> Instruct PARCO/PRL to tender for Russian Urals, West African, or US crude via Cape route (longer lead time: 4–6 weeks).</li>
+        <li><strong>Release fertilizer buffer stocks</strong> through NFDC. Cap DAP prices at Rs 16,000/bag through subsidy. Rabi crop protection is critical.</li>
+        <li><strong>Ministry of Commerce:</strong> Fast-track import substitution for edible oil (palm oil from Malaysia/Indonesia — not Hormuz dependent).</li>
+        <li><strong>Engage China:</strong> Request CPEC energy facility acceleration. Explore CNY-denominated crude purchase to reduce FX pressure.</li>
+        <li><strong>Communication strategy:</strong> PM/FM joint presser projecting calm. Publish fuel reserve data to prevent hoarding.</li>
+      </ul>
+    </div>
+
+    <div class="pol-phase">
+      <div class="pol-dot p3" style="margin-top:4px"></div>
+      <div class="pol-phase-label" style="color:var(--orange)">Tier 3 — Contingency Actions (1–3 Months)</div>
+      <div class="pol-phase-time">ACTIVATE WHEN: Brent &gt; $130 sustained or full closure exceeds 2 weeks</div>
+      <ul class="pol-items">
+        <li><strong>Emergency supplementary budget:</strong> Additional Rs 300–600B allocation for energy subsidies. Cut non-essential PSDP by 30%.</li>
+        <li><strong>SBP emergency measures:</strong> Temporary import compression — prioritize energy, food, medicines. Restrict non-essential imports via LCs.</li>
+        <li><strong>Seek emergency bilateral support:</strong> Saudi/UAE deposits ($2–3B each, as in 2022). China SAFE swap line activation ($4.5B). IMF Rapid Financing Instrument if needed.</li>
+        <li><strong>Fuel rationing framework:</strong> If supply disruption exceeds 40%, implement tiered rationing via Ehsaas program infrastructure. Priority: agriculture, essential transport, hospitals.</li>
+        <li><strong>Demand-side measures:</strong> Government fleet restrictions, work-from-home directives, reduced commercial hours. Estimated 10–15% demand reduction.</li>
+        <li><strong>Maximize domestic gas:</strong> Divert all RLNG to power sector. Prioritize pipeline gas for fertilizer plants. Instruction to SSGC/SNGPL.</li>
+        <li><strong>IMF program renegotiation:</strong> If fiscal targets breached, seek waiver or program augmentation. Historical precedent exists (2022 floods).</li>
+        <li><strong>Food security:</strong> Release wheat from PASSCO strategic reserves. Monitor atta/sugar/ghee prices at tehsil level. Deploy price control magistrates.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- G. SLIDES OUTLINE -->
+<div class="section" id="slides">
+  <div class="sec-label">Section G</div>
+  <div class="sec-title">10-Slide Leadership Brief <span>— Outline</span></div>
+  <div class="sec-subtitle">Recommended deck structure for NSC/Cabinet briefing. Each slide should take 2–3 minutes.</div>
+
+  <div class="slide-grid">
+    <div class="slide-card"><h4>Situation Overview</h4><p>Iran-Israel timeline. Hormuz status. What happened, what it means. Map showing Hormuz chokepoint and Pakistan supply routes.</p></div>
+    <div class="slide-card"><h4>Pakistan Exposure</h4><p>94% Gulf crude dependency. 9 LNG cargoes/month. $16B annual energy import bill. Single point of failure.</p></div>
+    <div class="slide-card"><h4>Scenario Framework</h4><p>5 scenarios from risk premium to prolonged escalation. Duration vs intensity matrix. Where we are today (S0–S1 boundary).</p></div>
+    <div class="slide-card"><h4>Oil & Energy Impact</h4><p>Brent price ranges. LNG cost spike. Fuel price pass-through. Electricity and gas tariff implications.</p></div>
+    <div class="slide-card"><h4>Inflation Trajectory</h4><p>CPI charts at 1/3/6 month horizons. Transmission channels. First-round vs second-round effects. 7% → 9–20% range.</p></div>
+    <div class="slide-card"><h4>External Account & FX</h4><p>Import bill impact. PKR depreciation risk. Current account projections. FX reserves trajectory under each scenario.</p></div>
+    <div class="slide-card"><h4>Fiscal Impact</h4><p>Subsidy cost if government cushions prices. PSDP cuts needed. Revenue impact. IMF program implications.</p></div>
+    <div class="slide-card"><h4>Social & Political Risk</h4><p>Transport strike risk. Food price sensitivity (atta, ghee). Urban vs rural vulnerability. Political opposition response.</p></div>
+    <div class="slide-card"><h4>Policy Response Menu</h4><p>Three-tier framework. 72-hour actions. 2-week actions. 1–3 month contingencies. Saudi/UAE/China engagement plan.</p></div>
+    <div class="slide-card"><h4>Decision Points</h4><p>What PM needs to decide this week. Fuel price pass-through quantum. Emergency cell activation. Bilateral engagement.</p></div>
+  </div>
+</div>
+
+<!-- ASSUMPTIONS + CONFIDENCE + RED TEAM -->
+<div class="section" id="redteam">
+  <div class="sec-label">Key Assumptions</div>
+  <div class="sec-title">Analytical Framework <span>— Assumptions, Confidence & Red Team</span></div>
+
+  <h3 style="font-family:Oswald;font-size:18px;margin:24px 0 12px">Key Assumptions Used</h3>
+  <ul class="assumption-list">
+    <li><strong>Oil price baseline:</strong> Pre-crisis Brent at ~$75/bbl. Current $85–93 already reflects risk premium. Assumptions for each scenario layer additional price impact on top of this.</li>
+    <li><strong>Gulf dependency:</strong> 94%+ of Pakistan crude from UAE/Saudi Arabia transits Hormuz (based on MEES 2019 data, updated with S&P Global 2024 analysis). Proxy used as GoP does not publish real-time route-level data.</li>
+    <li><strong>CPI weights:</strong> Based on PBS CPI basket (2015-16 base). Energy direct weight ~15–18%; food weight ~35%. Exchange rate pass-through coefficient estimated at 0.08–0.12 (i.e., 10% PKR depreciation → 0.8–1.2 ppt CPI impact, based on SBP working papers).</li>
+    <li><strong>Strategic reserves:</strong> Assumed at ~20 days of cover (industry estimate; exact GoP figures classified). Refinery crude stocks estimated at 7–10 days additional cover.</li>
+    <li><strong>Alternative supply routes:</strong> Saudi Yanbu/Red Sea crude can partially substitute within 2–4 weeks. Russian Urals or West African crude requires 4–8 weeks to establish.</li>
+    <li><strong>IMF program:</strong> Assumed Pakistan remains in active EFF program with fiscal deficit targets of ~6–6.5% of GDP. Breach triggers waiver negotiations, not automatic termination.</li>
+    <li><strong>Remittances:</strong> Gulf worker remittances ($25B+ annually from GCC) assumed to remain stable under S0–S2. Under S3–S4, 5–15% disruption possible from regional instability.</li>
+  </ul>
+
+  <h3 style="font-family:Oswald;font-size:18px;margin:32px 0 12px">Scenario Confidence Levels</h3>
+  <div style="margin:16px 0">
+    <div class="conf-row"><div class="conf-label sev-0">S0 — Risk Premium</div><div class="conf-bar"><div class="conf-fill" style="width:85%;background:var(--green)"></div></div><div class="conf-pct sev-0">85%</div></div>
+    <div class="conf-row"><div class="conf-label sev-1">S1 — Partial</div><div class="conf-bar"><div class="conf-fill" style="width:55%;background:var(--amber)"></div></div><div class="conf-pct sev-1">55%</div></div>
+    <div class="conf-row"><div class="conf-label sev-2">S2 — Full 2W</div><div class="conf-bar"><div class="conf-fill" style="width:30%;background:var(--orange)"></div></div><div class="conf-pct sev-2">30%</div></div>
+    <div class="conf-row"><div class="conf-label sev-3">S3 — Full 1–3M</div><div class="conf-bar"><div class="conf-fill" style="width:15%;background:var(--red)"></div></div><div class="conf-pct sev-3">15%</div></div>
+    <div class="conf-row"><div class="conf-label sev-4">S4 — Prolonged</div><div class="conf-bar"><div class="conf-fill" style="width:7%;background:#ff1744"></div></div><div class="conf-pct sev-4">7%</div></div>
+  </div>
+  <p style="font-size:11px;color:var(--dim);margin:12px 0">Note: Confidence levels represent analytical team assessment of scenario probability given current intelligence as of 7 March 2026. These shift daily with ground developments. S0 reflects current de facto state.</p>
+
+  <h3 style="font-family:Oswald;font-size:18px;margin:32px 0 12px">Upside Risks (Things Could Be Better)</h3>
+  <div class="rt-box" style="border-color:rgba(0,230,118,.2);background:rgba(0,230,118,.02)">
+    <h4 style="color:var(--green)">Upside Scenarios</h4>
+    <p><strong>Rapid de-escalation:</strong> Ceasefire within 1–2 weeks through GCC/Turkey mediation. Brent retraces to $80–85. Pakistan exposure limited to S0.</p>
+    <p><strong>US Navy convoy success:</strong> Trump's proposed tanker escort scheme works. Insurance rates normalize. Transit resumes at 50–70% capacity within weeks.</p>
+    <p><strong>Saudi Red Sea pivot:</strong> Saudi ARAMCO redirects 1–2M bbl/day through Yanbu pipeline to Red Sea. Pakistan secures G2G supply at competitive pricing.</p>
+    <p><strong>Global SPR release:</strong> IEA coordinates strategic reserve release (200M+ barrels available). Brent capped below $120 even under S2.</p>
+  </div>
+
+  <h3 style="font-family:Oswald;font-size:18px;margin:32px 0 12px">Downside Risks (Things Could Be Worse)</h3>
+  <div class="rt-box">
+    <h4>Downside Scenarios</h4>
+    <p><strong>War spreads to GCC:</strong> If Iran attacks Saudi/UAE oil infrastructure (Abqaiq 2.0 scenario), even Red Sea alternatives are disrupted. Brent could exceed $200.</p>
+    <p><strong>Mining of Hormuz:</strong> Iran deploys naval mines in the strait. Even after ceasefire, mine-clearing takes 2–6 months. Structural disruption to supply.</p>
+    <p><strong>Pakistan-specific FX crisis:</strong> If reserves drop below $10B, parallel market emerges, PKR falls 25%+. IMF program suspension. This would amplify all scenario impacts by 50–100%.</p>
+    <p><strong>Gulf remittance disruption:</strong> If conflict extends to UAE/Saudi, 2M+ Pakistani workers face displacement. Remittance inflows ($25B+ from GCC) disrupted. Current account collapses.</p>
+    <p><strong>Domestic political crisis:</strong> Fuel/food protests trigger political instability. Government falls or military intervention. Policy paralysis amplifies economic damage.</p>
+  </div>
+
+  <h3 style="font-family:Oswald;font-size:18px;margin:32px 0 12px;color:var(--red)">Red Team Assessment — Where This Analysis Could Be Wrong</h3>
+  <div class="rt-box">
+    <h4>Challenge 1: Gulf Dependency May Be Higher Than Stated</h4>
+    <p>We use 94% as the Gulf crude dependency figure (MEES 2019). Actual 2025–26 dependency may be closer to 97–99% given that recent US crude trial cargoes were one-off and Russia supply never materialized at scale. If true, our S2–S4 impact estimates are conservative.</p>
+  </div>
+  <div class="rt-box">
+    <h4>Challenge 2: Strategic Reserves Are Likely Lower Than Assumed</h4>
+    <p>We assume ~20 days of petroleum reserves. Industry sources suggest operational stocks may be as low as 12–15 days during low-demand periods. If a supply crunch hits during summer (peak demand), reserves could deplete in under 10 days. Government has no formal SPR separate from commercial stocks.</p>
+  </div>
+  <div class="rt-box">
+    <h4>Challenge 3: FX Pass-Through Could Be Non-Linear</h4>
+    <p>Our models assume 10% PKR depreciation → ~1 ppt CPI. But Pakistan's 2022 experience showed pass-through accelerates at stress points: from linear below 15% depreciation to exponential above 20%. A confidence break in the rupee changes the math entirely.</p>
+  </div>
+  <div class="rt-box">
+    <h4>Challenge 4: Second-Round Effects Are Underestimated in Short Horizons</h4>
+    <p>Our 1-month CPI estimates capture mainly first-round energy price effects. But Pakistan's informal economy transmits price signals faster than formal models assume. Atta prices can jump 15% within 72 hours of a fuel price hike as transporters immediately raise rates. Our 1-month numbers may be too conservative.</p>
+  </div>
+  <div class="rt-box">
+    <h4>Challenge 5: Policy Response Assumes Rational, Coordinated Action</h4>
+    <p>The policy menu assumes government agencies coordinate effectively and make timely decisions. Pakistan's track record on inter-ministry coordination during crises (2022 floods, 2023 FX crisis) suggests implementation lag of 2–4 weeks. By then, markets may have already priced in worst-case scenarios.</p>
+  </div>
+  <div class="rt-box">
+    <h4>Challenge 6: This Analysis Cannot Model Black Swans</h4>
+    <p>A direct attack on Gwadar port, a nuclear dimension to the Iran conflict, or a simultaneous India-Pakistan border incident would create compounding risks that no linear scenario model captures. These are tail risks but not zero-probability in the current environment.</p>
+  </div>
+</div>
+
+<!-- SOURCES -->
+<div class="section" id="sources">
+  <div class="sec-label">References</div>
+  <div class="sec-title">Data Sources & References</div>
+  <div class="src-list">
+    <p><strong>Official Pakistan Government Sources</strong></p>
+    <p>• <a href="https://www.sbp.org.pk/m_policy/index.asp" target="_blank">State Bank of Pakistan — Monetary Policy Statements & MPC Decisions</a></p>
+    <p>• <a href="https://www.sbp.org.pk/ecodata/Balancepayment_BPM6.pdf" target="_blank">SBP — Balance of Payments Data (BPM6 format)</a></p>
+    <p>• <a href="https://www.sbp.org.pk/dfmd/ferm.asp" target="_blank">SBP — Foreign Exchange Reserves (weekly release)</a></p>
+    <p>• <a href="https://www.sbp.org.pk/m_policy/2025/Reports/MPR-Aug-2025.pdf" target="_blank">SBP — Monetary Policy Report August 2025</a></p>
+    <p>• <a href="https://www.pbs.gov.pk/monthly-inflation-report-for-february-2026/" target="_blank">Pakistan Bureau of Statistics — CPI Monthly Report February 2026</a></p>
+    <p>• <a href="https://www.pbs.gov.pk/wp-content/uploads/2020/07/Annual-Analytical-Report-on-Trade-Statistics-of-Pakistan-FY2023-24.pdf" target="_blank">PBS — Annual Trade Statistics Report FY2023-24</a></p>
+    <p><strong>Oil & Energy</strong></p>
+    <p>• <a href="https://profit.pakistantoday.com.pk/2025/03/21/pakistans-oil-imports-edge-up-to-10-71bn-in-eight-months/" target="_blank">Pakistan Today — Oil imports $10.71B in 8 months FY25</a></p>
+    <p>• <a href="https://www.spglobal.com/commodityinsights/en/market-insights/latest-news/oil/112724-pakistans-2025-crude-oil-imports-expected-to-grow-product-inflows-steady" target="_blank">S&P Global Commodity Insights — Pakistan 2025 crude imports outlook</a></p>
+    <p>• <a href="https://www.eia.gov/todayinenergy/detail.php?id=65504" target="_blank">U.S. EIA — Strait of Hormuz: critical oil chokepoint analysis</a></p>
+    <p>• <a href="https://www.iea.org/about/oil-security-and-emergency-response/strait-of-hormuz" target="_blank">IEA — Strait of Hormuz oil security and emergency response</a></p>
+    <p>• <a href="https://www.mees.com/2019/10/18/economics-finance/pakistans-oil-gas-imports-gulf-dependence-intensifies/780a2890-f1aa-11e9-b4e1-eb8c31f1057b" target="_blank">MEES — Pakistan Gulf oil/gas dependence analysis (94%+)</a></p>
+    <p><strong>LNG</strong></p>
+    <p>• <a href="https://tribune.com.pk/story/2562163/pakistan-seeks-to-renegotiate-lng-deal-with-qatar" target="_blank">Express Tribune — Pakistan LNG contract renegotiation with Qatar</a></p>
+    <p>• <a href="https://gasoutlook.com/analysis/pakistan-lng-trajectory-dramatically-changes-course/" target="_blank">Gas Outlook — Pakistan LNG consumption and trajectory analysis</a></p>
+    <p>• <a href="https://www.thenews.com.pk/latest/1351803-lng-glut-pakistan-wants-qatar-to-sell-24-contracted-lng-cargoes-in-2026" target="_blank">The News — Qatar to divert 24 Pakistan LNG cargoes in 2026</a></p>
+    <p><strong>Macroeconomic & Market Data</strong></p>
+    <p>• <a href="https://profit.pakistantoday.com.pk/2026/03/02/pakistan-inflation-rises-to-7-in-february-2026/" target="_blank">Pakistan Today — CPI inflation rises to 7% in February 2026</a></p>
+    <p>• <a href="https://www.brecorder.com/news/40403801" target="_blank">Business Recorder — SBP holds policy rate at 10.5%</a></p>
+    <p>• <a href="https://profit.pakistantoday.com.pk/2026/02/28/pakistans-current-account-slips-to-1-1bn-deficit-in-7mfy26-as-trade-gap-widens/" target="_blank">Pakistan Today — CA deficit $1.1B in 7M FY26</a></p>
+    <p>• <a href="https://profit.pakistantoday.com.pk/2026/03/05/sbp-projects-3-75-4-75-growth-5-7-inflation-for-fy2025-26/" target="_blank">Pakistan Today — SBP FY26 projections: growth 3.75–4.75%, inflation 5–7%</a></p>
+    <p>• <a href="https://tradingeconomics.com/pakistan/inflation-cpi" target="_blank">Trading Economics — Pakistan CPI historical series</a></p>
+    <p>• <a href="https://tradingeconomics.com/pakistan/currency" target="_blank">Trading Economics — PKR/USD exchange rate</a></p>
+    <p><strong>Conflict & Geopolitical</strong></p>
+    <p>• <a href="https://www.cnbc.com/2026/03/06/iran-us-war-oil-prices-brent-wti-barrel-futures.html" target="_blank">CNBC — US crude tops $90 after Trump demands Iran surrender (6 Mar 2026)</a></p>
+    <p>• <a href="https://www.cnbc.com/2026/03/02/strait-of-hormuz-crisis-us-iran-israel-war-shipping-trade-oil.html" target="_blank">CNBC — Strait of Hormuz crisis: what it means for global shipping</a></p>
+    <p>• <a href="https://www.aljazeera.com/news/2026/3/1/how-us-israel-attacks-on-iran-threaten-the-strait-of-hormuz-oil-markets" target="_blank">Al Jazeera — How US-Israel attacks threaten Hormuz and oil markets</a></p>
+    <p>• <a href="https://www.cnbc.com/2026/03/03/us-iran-war-live-updates.html" target="_blank">CNBC — Trump tanker escort and insurance proposal</a></p>
+    <p>• <a href="https://www.thenews.pk/print/1402278-hormuz-crisis-pakistan-eyes-saudi-red-sea-oil" target="_blank">The News International — Pakistan eyes Saudi Red Sea oil route</a></p>
+    <p>• <a href="https://www.cnbc.com/2026/03/03/strait-of-hormuz-closure-which-countries-will-be-hit-the-most.html" target="_blank">CNBC — Hormuz closure: most impacted countries analysis</a></p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  WORLD SITUATION ROOM — HORMUZ CRISIS ANALYSIS — CLASSIFICATION: FOR OFFICIAL USE ONLY<br>
+  PREPARED 7 MARCH 2026 — JOINT CRISIS ANALYSIS TEAM — GOVERNMENT OF PAKISTAN<br>
+  DATA REFRESHED DAILY — MONITOR EARLY WARNING INDICATORS FOR SCENARIO ESCALATION
+</div>
+
+<!-- AI GENERATION PANEL -->
+<div class="ai-overlay" id="aiOverlay" onclick="closeAI()"></div>
+<div class="ai-panel" id="aiPanel">
+  <div class="ai-header">
+    <h3>⚡ Generate Fresh Analysis</h3>
+    <button class="ai-close" onclick="closeAI()">✕</button>
+  </div>
+  <div class="ai-body">
+    <div class="ai-field">
+      <label>Anthropic API Key</label>
+      <input type="password" id="aiKey" placeholder="sk-ant-api03-..." autocomplete="off">
+      <div style="font-size:9px;color:var(--dim);margin-top:4px">Stored locally in your browser only. Never sent to our servers.</div>
+    </div>
+    <div class="ai-field">
+      <label>Model</label>
+      <select id="aiModel">
+        <option value="claude-sonnet-4-20250514">Claude Sonnet 4 (Recommended)</option>
+        <option value="claude-opus-4-20250514">Claude Opus 4 (Most Capable)</option>
+      </select>
+    </div>
+    <div class="ai-field">
+      <label>Analysis Focus</label>
+      <select id="aiFocus">
+        <option value="full">Full Scenario Analysis (All Sections)</option>
+        <option value="oil">Oil & Energy Price Impact Only</option>
+        <option value="inflation">Inflation & CPI Deep Dive</option>
+        <option value="fx">External Account & FX Risk</option>
+        <option value="policy">Policy Response Recommendations</option>
+        <option value="custom">Custom Prompt</option>
+      </select>
+    </div>
+    <div class="ai-field" id="customPromptField" style="display:none">
+      <label>Custom Analysis Prompt</label>
+      <textarea id="aiCustom" placeholder="E.g., Analyze impact on Pakistan's textile export sector if Hormuz closure extends beyond 6 weeks..."></textarea>
+    </div>
+    <div class="ai-field">
+      <label>Include Live Data Context</label>
+      <select id="aiContext">
+        <option value="yes">Yes — Fetch latest Brent, PKR/USD, CPI from page</option>
+        <option value="no">No — Use model's training data only</option>
+      </select>
+    </div>
+    <button class="ai-run" id="aiRun" onclick="runAnalysis()">⚡ GENERATE ANALYSIS</button>
+    <div class="ai-status" id="aiStatus"></div>
+
+    <div class="ai-saved" id="aiSaved">
+      <h4>Previous Analyses</h4>
+      <div id="aiHistory"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* Smooth nav highlighting */
+const navLinks=document.querySelectorAll('.nav a');
+const sections=document.querySelectorAll('.section');
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      navLinks.forEach(l=>l.classList.remove('active'));
+      const id=e.target.getAttribute('id');
+      const link=document.querySelector(`.nav a[href="#${id}"]`);
+      if(link)link.classList.add('active');
+    }
+  });
+},{threshold:0.2,rootMargin:'-100px 0px -60% 0px'});
+sections.forEach(s=>observer.observe(s));
+
+/* AI Panel */
+function openAI(){
+  document.getElementById('aiPanel').classList.add('open');
+  document.getElementById('aiOverlay').classList.add('open');
+  const saved=localStorage.getItem('anthropic_key');
+  if(saved)document.getElementById('aiKey').value=saved;
+  loadHistory();
+}
+function closeAI(){
+  document.getElementById('aiPanel').classList.remove('open');
+  document.getElementById('aiOverlay').classList.remove('open');
+}
+document.getElementById('aiFocus').onchange=function(){
+  document.getElementById('customPromptField').style.display=this.value==='custom'?'block':'none';
+};
+
+function getPageContext(){
+  const stats=document.querySelectorAll('.tb-stat');
+  let ctx={};
+  stats.forEach(s=>{
+    const v=s.querySelector('.v')?.textContent;
+    const l=s.querySelector('.l')?.textContent;
+    if(v&&l)ctx[l]=v;
+  });
+  return ctx;
+}
+
+const FOCUS_PROMPTS={
+  full:`Act as a joint crisis-analysis team for the Government of Pakistan made up of:
+1. A geopolitical risk analyst
+2. An oil and LNG market strategist
+3. A Pakistan macroeconomist
+4. A central bank inflation specialist
+5. A trade and logistics expert
+6. A fiscal policy advisor
+7. A red-team reviewer who challenges assumptions
+
+Produce a COMPLETE decision-grade scenario analysis on the inflationary and macroeconomic impact on Pakistan of a prolonged Iran-Israel war resulting in disruption/closure of the Strait of Hormuz.
+
+Model these scenarios:
+S0: Risk premium only, no closure
+S1: Partial disruption 2-4 weeks
+S2: Full closure 2 weeks
+S3: Full closure 1-3 months
+S4: Prolonged regional escalation
+
+For EACH scenario, provide specific ranges for: Brent oil price, LNG price shock, shipping/insurance impact, Pakistan import bill, PKR depreciation, fuel pass-through, electricity/gas tariffs, food inflation, fertilizer impact, headline CPI at 1/3/6 months, core inflation, trade deficit, fiscal impact, SBP policy response, social risk.
+
+Output format:
+A. 1-page executive summary
+B. Scenario comparison table with specific numbers
+C. Pakistan inflation transmission channels
+D. CPI impact ranges per scenario
+E. Early warning indicators to monitor daily
+F. Policy response menu (72hrs / 2 weeks / 1-3 months)
+G. Red team section — where this analysis could be wrong
+
+Use ranges not false precision. Distinguish first-round vs second-round effects. Be conservative and policy-relevant. Write for PM, FM, SBP Governor, military leadership.`,
+
+  oil:`Analyze the oil and energy price impact on Pakistan from Hormuz disruption. Cover: Brent price scenarios ($85-200+ range), LNG spot vs contract pricing, RLNG cost to power sector, fuel pass-through via OGRA, refinery margin impact, strategic reserve adequacy, alternative supply routes (Saudi Red Sea/Yanbu). Use Pakistan-specific data. Provide ranges for each scenario.`,
+
+  inflation:`Deep dive on Pakistan inflation transmission from Hormuz crisis. Cover all 7 channels: crude oil, LNG/power, freight/insurance, exchange rate, fuel/utility pricing, food/fertilizer, expectations. Provide CPI impact ranges at 1/3/6 month horizons for 5 scenarios. Distinguish first-round vs second-round. Use PBS CPI weights (energy ~15-18%, food ~35%). Address core inflation implications.`,
+
+  fx:`Analyze Pakistan external account and FX risks from Hormuz crisis. Cover: import bill scenarios, current account trajectories, FX reserve drawdown paths, PKR/USD depreciation scenarios, parallel market risk, remittance impact (Gulf workers), capital flight risk, IMF program implications, bilateral support options (Saudi/UAE/China). Provide specific ranges.`,
+
+  policy:`Design a 3-tier policy response framework for Pakistan government. Tier 1: 72-hour immediate actions. Tier 2: 2-week near-term. Tier 3: 1-3 month contingency. Cover: energy crisis cell, strategic reserves, SBP FX intervention, bilateral oil deals (Saudi Red Sea), fuel subsidy design, SBP rate response, import compression, emergency financing (IMF/bilateral), food security, communication strategy. Be specific and actionable.`
+};
+
+async function runAnalysis(){
+  const key=document.getElementById('aiKey').value.trim();
+  if(!key){document.getElementById('aiStatus').textContent='⚠ Enter your Anthropic API key';document.getElementById('aiStatus').className='ai-status error';return;}
+  localStorage.setItem('anthropic_key',key);
+
+  const model=document.getElementById('aiModel').value;
+  const focus=document.getElementById('aiFocus').value;
+  const status=document.getElementById('aiStatus');
+  const btn=document.getElementById('aiRun');
+
+  let prompt=FOCUS_PROMPTS[focus];
+  if(focus==='custom'){
+    prompt=document.getElementById('aiCustom').value.trim();
+    if(!prompt){status.textContent='⚠ Enter a custom prompt';status.className='ai-status error';return;}
+  }
+
+  const ctx=document.getElementById('aiContext').value==='yes'?getPageContext():null;
+  if(ctx){
+    prompt+=`\n\nCurrent live data context: ${JSON.stringify(ctx)}\nDate: ${new Date().toISOString().split('T')[0]}`;
+  }
+
+  btn.disabled=true;
+  status.textContent='⏳ Calling Claude API... This may take 30-60 seconds for full analysis.';
+  status.className='ai-status';
+
+  try{
+    const resp=await fetch('/api/analyze',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({key,model,prompt})
+    });
+    if(!resp.ok){
+      const err=await resp.json().catch(()=>({error:'Request failed'}));
+      throw new Error(err.error||`HTTP ${resp.status}`);
+    }
+    const data=await resp.json();
+    const content=data.content||data.text||'No content returned';
+
+    /* Save to history */
+    const history=JSON.parse(localStorage.getItem('analysis_history')||'[]');
+    const entry={
+      id:Date.now(),
+      date:new Date().toLocaleString(),
+      focus:focus,
+      model:model,
+      content:content
+    };
+    history.unshift(entry);
+    if(history.length>10)history.pop();
+    localStorage.setItem('analysis_history',JSON.stringify(history));
+
+    status.textContent='✓ Analysis generated successfully. Opening...';
+    status.className='ai-status ok';
+    loadHistory();
+    showAnalysis(entry);
+  }catch(e){
+    status.textContent='✕ Error: '+e.message;
+    status.className='ai-status error';
+  }finally{
+    btn.disabled=false;
+  }
+}
+
+function loadHistory(){
+  const history=JSON.parse(localStorage.getItem('analysis_history')||'[]');
+  const el=document.getElementById('aiHistory');
+  if(!history.length){el.innerHTML='<div style="color:var(--dim);font-size:11px">No previous analyses yet.</div>';return;}
+  el.innerHTML=history.map(h=>`<div class="ai-saved-item" onclick='showAnalysis(${JSON.stringify(h).replace(/'/g,"&#39;")})'>
+    <span>${h.date} — ${h.focus.toUpperCase()}</span>
+    <span style="color:var(--dim);font-size:9px">${h.model.split('-').slice(0,2).join(' ')}</span>
+  </div>`).join('');
+}
+
+function showAnalysis(entry){
+  const win=window.open('','_blank');
+  win.document.write(`<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Crisis Analysis — ${entry.date}</title>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#04060a;color:#e8eaf6;font-family:'Inter',sans-serif;font-size:13px;line-height:1.8;padding:40px;max-width:1000px;margin:0 auto}
+  h1,h2,h3{font-family:'Oswald';font-weight:500;margin:28px 0 12px}
+  h1{font-size:28px;color:#ff3333;border-bottom:1px solid #1a1f30;padding-bottom:12px}
+  h2{font-size:20px;color:#00e5ff}
+  h3{font-size:16px;color:#ffab00}
+  p{margin:8px 0;color:#8892b0}
+  strong{color:#e8eaf6}
+  ul,ol{margin:8px 0 8px 24px;color:#8892b0}
+  li{margin:4px 0}
+  table{width:100%;border-collapse:collapse;margin:16px 0;font-size:12px}
+  th{background:#0d1119;font-family:'Oswald';font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#5c6380;padding:10px;text-align:left;border-bottom:2px solid #1a1f30}
+  td{padding:8px 10px;border-bottom:1px solid rgba(26,31,48,.5);color:#8892b0}
+  code,pre{font-family:'JetBrains Mono';background:#080b12;border:1px solid #1a1f30;padding:2px 6px;font-size:11px}
+  pre{padding:16px;overflow-x:auto;margin:12px 0}
+  blockquote{border-left:3px solid #ff3333;padding:8px 16px;margin:12px 0;background:rgba(255,51,51,.03)}
+  .meta{font-family:'JetBrains Mono';font-size:10px;color:#5c6380;letter-spacing:1px;margin-bottom:32px}
+  .dl-bar{position:sticky;top:0;background:rgba(4,6,10,.95);backdrop-filter:blur(10px);padding:12px 0;border-bottom:1px solid #1a1f30;margin:-40px -40px 32px;padding:12px 40px;display:flex;gap:12px;z-index:10}
+  .dl-bar button{background:transparent;border:1px solid #00e5ff;color:#00e5ff;font-family:'JetBrains Mono';font-size:10px;letter-spacing:1px;padding:6px 16px;cursor:pointer;transition:.2s}
+  .dl-bar button:hover{background:rgba(0,229,255,.1)}
+  @media print{.dl-bar{display:none}body{background:#fff;color:#111}h1{color:#c00}h2{color:#006}h3{color:#860}p,li,td{color:#333}th{background:#eee;color:#555}table,pre,blockquote{border-color:#ddd}}
+  </style></head><body>
+  <div class="dl-bar"><button onclick="window.print()">⤓ Download PDF</button><button onclick="window.close()">✕ Close</button></div>
+  <h1>HORMUZ CRISIS — AI-GENERATED ANALYSIS</h1>
+  <div class="meta">Model: ${entry.model} &nbsp;|&nbsp; Focus: ${entry.focus.toUpperCase()} &nbsp;|&nbsp; Generated: ${entry.date}</div>
+  <div id="content"></div>
+  <script>
+  const raw=\`${entry.content.replace(/\\/g,'\\\\').replace(/`/g,'\\`').replace(/\$/g,'\\$')}\`;
+  /* Simple markdown-like rendering */
+  let html=raw
+    .replace(/^### (.*$)/gm,'<h3>$1</h3>')
+    .replace(/^## (.*$)/gm,'<h2>$1</h2>')
+    .replace(/^# (.*$)/gm,'<h1>$1</h1>')
+    .replace(/\\*\\*(.*?)\\*\\*/g,'<strong>$1</strong>')
+    .replace(/^[\\-\\*] (.*$)/gm,'<li>$1</li>')
+    .replace(/^> (.*$)/gm,'<blockquote>$1</blockquote>')
+    .replace(/\\n\\n/g,'</p><p>')
+    .replace(/^(?!<[hluobp])/gm,'');
+  if(!html.startsWith('<'))html='<p>'+html;
+  if(!html.endsWith('>')){html+='</p>';}
+  document.getElementById('content').innerHTML=html;
+  <\/script></body></html>`);
+  win.document.close();
+}
+</script>
+</body>
+</html>
