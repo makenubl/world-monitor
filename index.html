@@ -370,14 +370,6 @@ body{background:var(--bg);color:var(--txt);font-family:'JetBrains Mono',monospac
 .sim-dl-btn{width:100%;background:rgba(0,229,255,.08);border:1px solid rgba(0,229,255,.3);color:var(--cyan);font-family:'Oswald';font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:8px;cursor:pointer;transition:.2s;margin-top:8px}
 .sim-dl-btn:hover{background:rgba(0,229,255,.15);border-color:var(--cyan)}
 
-/* ═══ ROCKET / MISSILE ANIMATIONS ═══ */
-.rocket-trail{position:absolute;pointer-events:none;z-index:160}
-.rocket{width:4px;height:16px;background:linear-gradient(to bottom,#fff,var(--red));border-radius:2px;position:absolute;filter:drop-shadow(0 0 6px var(--red)) drop-shadow(0 0 12px rgba(255,51,51,.6));animation:rocketFall 1.8s ease-in forwards}
-.rocket-smoke{position:absolute;width:3px;height:80px;background:linear-gradient(to bottom,rgba(255,255,255,.4),transparent);filter:blur(2px);animation:rocketFall 1.8s ease-in forwards}
-@keyframes rocketFall{0%{transform:translateY(-200px) scale(1);opacity:1}80%{opacity:1}100%{transform:translateY(0) scale(.5);opacity:0}}
-.impact-flash{position:absolute;width:0;height:0;border-radius:50%;background:radial-gradient(circle,rgba(255,200,50,.9),rgba(255,51,51,.6),transparent);pointer-events:none;animation:impactBoom .8s ease-out forwards;z-index:161}
-@keyframes impactBoom{0%{width:0;height:0;opacity:1}50%{width:120px;height:120px;margin-left:-60px;margin-top:-60px;opacity:.8}100%{width:200px;height:200px;margin-left:-100px;margin-top:-100px;opacity:0}}
-
 /* ═══ DECISION MAKER PROFILES ═══ */
 .dm-card{position:absolute;z-index:155;pointer-events:none;animation:dmFadeIn .6s ease}
 @keyframes dmFadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
@@ -400,18 +392,6 @@ body{background:var(--bg);color:var(--txt);font-family:'JetBrains Mono',monospac
 .lw-val{font-family:'Oswald';font-size:11px;font-weight:600;color:var(--txt);letter-spacing:.5px}
 .lw-lbl{font-size:6px;letter-spacing:1.5px;color:var(--dim);text-transform:uppercase}
 
-/* ═══ AUDIO CONTROL ═══ */
-.audio-ctrl{position:fixed;top:74px;right:calc(var(--sidebar) + 16px);z-index:92;background:var(--panel);border:1px solid var(--bd);padding:4px 10px;font-family:'Oswald';font-size:8px;letter-spacing:2px;color:var(--dim);cursor:pointer;transition:.2s;display:none;text-transform:uppercase;backdrop-filter:blur(8px)}
-.audio-ctrl.show{display:flex;align-items:center;gap:6px}
-.audio-ctrl:hover{color:var(--cyan);border-color:var(--cyan)}
-.audio-ctrl .vol-bars{display:flex;gap:1px;align-items:flex-end}
-.audio-ctrl .vol-bar{width:3px;background:var(--cyan);border-radius:1px;animation:volPulse 1.2s ease infinite}
-.audio-ctrl .vol-bar:nth-child(1){height:4px;animation-delay:0s}
-.audio-ctrl .vol-bar:nth-child(2){height:8px;animation-delay:.15s}
-.audio-ctrl .vol-bar:nth-child(3){height:6px;animation-delay:.3s}
-.audio-ctrl .vol-bar:nth-child(4){height:10px;animation-delay:.45s}
-.audio-ctrl.muted .vol-bar{background:var(--dim);animation:none}
-@keyframes volPulse{0%,100%{opacity:.5}50%{opacity:1}}
 
 /* ═══ MARKETS TAB ═══ */
 .mkt-card{background:rgba(13,17,25,.7);border:1px solid var(--bd);padding:12px;margin-bottom:8px;transition:.2s;cursor:pointer}
@@ -605,12 +585,6 @@ body{background:var(--bg);color:var(--txt);font-family:'JetBrains Mono',monospac
   </div>
 </div>
 
-<!-- AUDIO CONTROL -->
-<div class="audio-ctrl" id="audioCtrl" onclick="toggleSimAudio()">
-  <div class="vol-bars"><div class="vol-bar"></div><div class="vol-bar"></div><div class="vol-bar"></div><div class="vol-bar"></div></div>
-  <span id="audioLabel">AUDIO ON</span>
-</div>
-
 <!-- DECISION MAKER CONTAINER -->
 <div id="dmContainer" style="position:fixed;inset:0;z-index:154;pointer-events:none"></div>
 
@@ -639,7 +613,7 @@ body{background:var(--bg);color:var(--txt);font-family:'JetBrains Mono',monospac
   <div class="ai-bar-inner">
     <div class="ai-bar-label"><span class="ai-bar-dot"></span> AI SCENARIO ENGINE</div>
     <div class="ai-bar-row">
-      <input class="ai-bar-input" id="aiInput" type="text" placeholder='Try: "What if China invades Taiwan?" or "What if oil hits $150?"' maxlength="300" autocomplete="off">
+      <input class="ai-bar-input" id="aiInput" type="text" placeholder='Ask anything — "What if NATO collapses?" "What if AI replaces all jobs?" Unlimited simulations.' maxlength="300" autocomplete="off">
       <button class="ai-bar-btn" id="aiSendBtn" onclick="handleAISubmit()">
         <span class="ai-bar-btn-icon">▶</span> SIMULATE
       </button>
@@ -1059,16 +1033,21 @@ const SIM=[
 
 /* ═══ RENDER SCENARIO BUTTONS ═══ */
 const scenBtns=document.getElementById('scenBtns');
-SIM.forEach((s,i)=>{
+
+function addScenarioButton(s,i,isAI){
   const b=document.createElement('button');b.className='sp-btn';
   b.innerHTML=`
-    <div class="sp-top"><span class="sp-name">${s.name}</span><span class="sp-badge ${s.badge}">${s.badgeText}</span></div>
-    <div class="sp-desc">${s.desc}</div>
+    <div class="sp-top"><span class="sp-name">${isAI?'🤖 ':''}${s.name}</span><span class="sp-badge ${s.badge}">${s.badgeText}</span></div>
+    <div class="sp-desc">${s.desc||''}</div>
     <div class="sp-play-row"><span class="sp-play-btn" data-idx="${i}">▶ RUN SIMULATION</span><span class="sp-steps">${s.steps.length} phases · ~${Math.round(s.steps.reduce((a,x)=>a+x.dur,0)/1000)}s</span></div>
   `;
   b.querySelector('.sp-play-btn').onclick=(e)=>{e.stopPropagation();startSim(i)};
-  scenBtns.appendChild(b);
-});
+  if(isAI)scenBtns.insertBefore(b,scenBtns.firstChild);
+  else scenBtns.appendChild(b);
+  return b;
+}
+
+SIM.forEach((s,i)=>addScenarioButton(s,i,false));
 
 /* ═══ SIM ENGINE ═══ */
 let simOn=false,simPause=false,simTO=null,curStep=0,curSim=null;
@@ -1640,9 +1619,11 @@ async function submitAIScenario(prompt){
       if(!s.dur)s.dur=8000;
     });
 
-    /* Push into SIM array and start */
+    /* Push into SIM array, add button, and start */
+    if(!sim.desc)sim.desc=prompt;
     const idx=SIM.length;
     SIM.push(sim);
+    addScenarioButton(sim,idx,true);
     startSim(idx);
 
     /* Show history */
@@ -1665,9 +1646,7 @@ async function submitAIScenario(prompt){
 const _origStopSim=stopSim;
 stopSim=function(){
   _origStopSim();
-  stopSimAudio();
   document.getElementById('simImpactPanel').classList.remove('show');
-  document.getElementById('audioCtrl').classList.remove('show');
   document.getElementById('dmContainer').innerHTML='';
   document.getElementById('liveWidgets').classList.remove('sim-hide');
   if(lastAIPrompt){
@@ -1723,98 +1702,6 @@ function showDecisionMakers(leaders,cam){
     card.innerHTML=`<div class="dm-inner"><img class="dm-photo" src="${ldr.photo}" onerror="this.style.display='none'" alt="${ldr.name}"><div class="dm-name">${ldr.name}</div><div class="dm-role">${ldr.role}</div><div class="dm-stats">${ldr.stats.map(s=>`<div class="dm-stat"><div class="dm-stat-val">${s.v}</div><div class="dm-stat-lbl">${s.l}</div></div>`).join('')}</div></div>`;
     container.appendChild(card);
   });
-}
-
-/* ═══ ROCKET / MISSILE ANIMATIONS ═══ */
-function fireRockets(lat,lon,count){
-  count=count||3;
-  for(let i=0;i<count;i++){
-    setTimeout(()=>{
-      try{
-        const pt=map.project([lon+(Math.random()-.5)*.5,lat+(Math.random()-.5)*.3]);
-        const rocket=document.createElement('div');
-        rocket.className='rocket-trail';
-        rocket.style.left=pt.x+'px';rocket.style.top=pt.y+'px';
-        rocket.innerHTML='<div class="rocket-smoke"></div><div class="rocket"></div>';
-        document.getElementById('ripBox').appendChild(rocket);
-        setTimeout(()=>{
-          const flash=document.createElement('div');
-          flash.className='impact-flash';
-          flash.style.left=pt.x+'px';flash.style.top=pt.y+'px';
-          document.getElementById('ripBox').appendChild(flash);
-          flash.addEventListener('animationend',()=>flash.remove());
-        },1600);
-        setTimeout(()=>rocket.remove(),2000);
-      }catch(e){}
-    },i*400);
-  }
-}
-
-/* ═══ WAR AMBIENT AUDIO ═══ */
-let simAudioCtx=null,simAudioGain=null,simAudioNodes=[];
-let simAudioMuted=false;
-
-function startSimAudio(){
-  try{
-    if(!simAudioCtx)simAudioCtx=new(window.AudioContext||window.webkitAudioContext)();
-    if(simAudioCtx.state==='suspended')simAudioCtx.resume();
-    simAudioGain=simAudioCtx.createGain();
-    simAudioGain.gain.value=0.15;
-    simAudioGain.connect(simAudioCtx.destination);
-    /* Deep war drone — layered oscillators */
-    [48,72,96,144].forEach(freq=>{
-      const osc=simAudioCtx.createOscillator();
-      const g=simAudioCtx.createGain();
-      osc.type=freq<100?'sawtooth':'sine';
-      osc.frequency.value=freq;
-      g.gain.value=freq<100?0.08:0.03;
-      /* Slow LFO modulation for tension */
-      const lfo=simAudioCtx.createOscillator();
-      const lfoGain=simAudioCtx.createGain();
-      lfo.frequency.value=0.2+Math.random()*0.3;
-      lfoGain.gain.value=freq*0.02;
-      lfo.connect(lfoGain);
-      lfoGain.connect(osc.frequency);
-      lfo.start();
-      osc.connect(g);
-      g.connect(simAudioGain);
-      osc.start();
-      simAudioNodes.push(osc,lfo);
-    });
-    /* Filtered noise for distant rumble */
-    const bufSize=simAudioCtx.sampleRate*2;
-    const buf=simAudioCtx.createBuffer(1,bufSize,simAudioCtx.sampleRate);
-    const d=buf.getChannelData(0);
-    for(let i=0;i<bufSize;i++)d[i]=(Math.random()*2-1)*0.5;
-    const noise=simAudioCtx.createBufferSource();
-    noise.buffer=buf;noise.loop=true;
-    const filt=simAudioCtx.createBiquadFilter();
-    filt.type='lowpass';filt.frequency.value=120;filt.Q.value=1;
-    const ng=simAudioCtx.createGain();ng.gain.value=0.12;
-    noise.connect(filt);filt.connect(ng);ng.connect(simAudioGain);
-    noise.start();
-    simAudioNodes.push(noise);
-    document.getElementById('audioCtrl').classList.add('show');
-    document.getElementById('audioCtrl').classList.remove('muted');
-    document.getElementById('audioLabel').textContent='AUDIO ON';
-    simAudioMuted=false;
-  }catch(e){console.warn('Audio:',e)}
-}
-
-function stopSimAudio(){
-  simAudioNodes.forEach(n=>{try{n.stop()}catch(e){}});
-  simAudioNodes=[];
-  if(simAudioGain){try{simAudioGain.disconnect()}catch(e){}}
-  simAudioGain=null;
-  document.getElementById('audioCtrl').classList.remove('show');
-}
-
-function toggleSimAudio(){
-  if(!simAudioGain)return;
-  simAudioMuted=!simAudioMuted;
-  simAudioGain.gain.value=simAudioMuted?0:0.15;
-  document.getElementById('audioCtrl').classList.toggle('muted',simAudioMuted);
-  document.getElementById('audioLabel').textContent=simAudioMuted?'MUTED':'AUDIO ON';
 }
 
 /* ═══ IMPACT TIMELINE TRACKER ═══ */
@@ -1886,7 +1773,6 @@ startSim=function(idx){
   document.getElementById('dmContainer').innerHTML='';
   document.getElementById('liveWidgets').classList.add('sim-hide');
   _origStartSim2(idx);
-  startSimAudio();
 };
 
 const _origPlayS2=playS;
@@ -1896,14 +1782,6 @@ playS=function(idx){
   const s=curSim.steps[idx];
   /* Add impact to timeline */
   addImpactStep(curSim,idx);
-  /* Fire rockets on conflict areas */
-  if(s.rip&&s.rip.length>0){
-    setTimeout(()=>{
-      s.rip.forEach(r=>{
-        if(r.c==='red'||r.c==='amber')fireRockets(r.la,r.lo,r.n||3);
-      });
-    },2000);
-  }
   /* Show decision makers */
   const leaders=getRelevantLeaders(curSim,idx);
   if(leaders.length)setTimeout(()=>showDecisionMakers(leaders,s.cam),1500);
