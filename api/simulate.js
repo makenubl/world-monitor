@@ -47,7 +47,7 @@ The JSON must match this exact structure:
 }
 
 RULES:
-1. Generate 3-5 steps/phases. Each step is a phase of the crisis unfolding.
+1. Generate 8-12 steps/phases. Each step is a phase of the crisis unfolding. More steps = more depth. Cover HOUR 1, DAY 1, DAY 3, WEEK 1, WEEK 2, MONTH 1, MONTH 3, MONTH 6, YEAR 1, AFTERMATH etc.
 2. Use REAL geographic coordinates for camera positions and ripple effects. Be accurate.
 3. Camera center is [longitude, latitude]. Zoom 3-7 (3=global, 7=city). Pitch 30-55. Duration 2000-3000ms.
 4. Ripple colors: "red" for conflict/crisis, "amber" for warning/economic, "cyan" for strategic/diplomatic, "green" for positive/resolution. n = number of ripples (2-5).
@@ -85,7 +85,7 @@ Return ONLY the JSON object. No other text.`;
       },
       body: JSON.stringify({
         model: 'claude-sonnet-4-20250514',
-        max_tokens: 4096,
+        max_tokens: 8192,
         messages: [{ role: 'user', content: prompt }],
         system: systemPrompt
       })

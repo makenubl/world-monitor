@@ -19,6 +19,8 @@
 <meta name="description" content="Interactive global geopolitical simulation — conflicts, flights, seismic activity, intel. NASA satellite imagery with cinematic war-room interface.">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3CradialGradient id='g' cx='50%25' cy='50%25' r='50%25'%3E%3Cstop offset='0%25' stop-color='%23091428'/%3E%3Cstop offset='100%25' stop-color='%2304060a'/%3E%3C/radialGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='30' fill='url(%23g)' stroke='%23ff3333' stroke-width='2'/%3E%3Cellipse cx='32' cy='32' rx='30' ry='12' fill='none' stroke='%2300e5ff' stroke-width='0.8' opacity='0.5'/%3E%3Cellipse cx='32' cy='32' rx='20' ry='30' fill='none' stroke='%2300e5ff' stroke-width='0.8' opacity='0.4'/%3E%3Cellipse cx='32' cy='32' rx='8' ry='30' fill='none' stroke='%2300e5ff' stroke-width='0.6' opacity='0.3'/%3E%3Cline x1='32' y1='2' x2='32' y2='62' stroke='%2300e5ff' stroke-width='0.5' opacity='0.3'/%3E%3Cline x1='2' y1='32' x2='62' y2='32' stroke='%2300e5ff' stroke-width='0.5' opacity='0.3'/%3E%3Cpath d='M32 2 A30 30 0 0 1 55 16' stroke='%23ff3333' stroke-width='2.5' fill='none' stroke-linecap='round' opacity='0.9'/%3E%3Ccircle cx='55' cy='16' r='2.5' fill='%23ff3333'/%3E%3C/svg%3E">
 <script src="https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.2/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.4/jspdf.plugin.autotable.min.js"></script>
 <link href="https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.css" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
 <style>
@@ -581,7 +583,7 @@ body{background:var(--bg);color:var(--txt);font-family:'JetBrains Mono',monospac
   <div class="sim-cumulative" id="simCumulative">
     <div class="sim-cumulative-title">Cumulative Impact</div>
     <div id="simCumulativeData"></div>
-    <button class="sim-dl-btn" onclick="downloadSimReport()">⬇ DOWNLOAD SIMULATION REPORT</button>
+    <button class="sim-dl-btn" onclick="downloadSimReport()">⬇ DOWNLOAD PDF REPORT</button>
   </div>
 </div>
 
@@ -1657,9 +1659,9 @@ stopSim=function(){
 
 /* ═══ DECISION MAKERS DATABASE ═══ */
 const decisionMakers={
-  'iran':[{name:'Ali Khamenei',role:'Supreme Leader of Iran',photo:'https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Ali_Khamenei_crop.jpg/220px-Ali_Khamenei_crop.jpg',stats:[{v:'44 yrs',l:'In Power'},{v:'IRGC',l:'Commands'},{v:'Nuclear',l:'Program'}]},
-    {name:'Masoud Pezeshkian',role:'President of Iran',photo:'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Masoud_Pezeshkian_%28cropped%29.jpg/220px-Masoud_Pezeshkian_%28cropped%29.jpg',stats:[{v:'2024',l:'Elected'},{v:'Reform',l:'Faction'},{v:'Moderate',l:'Stance'}]}],
-  'israel':[{name:'Benjamin Netanyahu',role:'Prime Minister of Israel',photo:'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Benjamin_Netanyahu_2023.jpg/220px-Benjamin_Netanyahu_2023.jpg',stats:[{v:'16+ yrs',l:'PM Total'},{v:'IDF',l:'Commands'},{v:'Gaza Op',l:'Ordered'}]}],
+  'iran':[{name:'Masoud Pezeshkian',role:'President of Iran (Acting Head of State)',photo:'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Masoud_Pezeshkian_%28cropped%29.jpg/220px-Masoud_Pezeshkian_%28cropped%29.jpg',stats:[{v:'2024',l:'Elected'},{v:'Interim',l:'Leadership'},{v:'Post-Khamenei',l:'Era'}]}],
+  'israel':[{name:'Benjamin Netanyahu',role:'Prime Minister of Israel',photo:'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Benjamin_Netanyahu_2023.jpg/220px-Benjamin_Netanyahu_2023.jpg',stats:[{v:'16+ yrs',l:'PM Total'},{v:'IDF',l:'Commands'},{v:'Gaza Op',l:'Ordered'}]},
+    {name:'Israel Katz',role:'Defence Minister of Israel',photo:'https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Israel_Katz_2023.jpg/220px-Israel_Katz_2023.jpg',stats:[{v:'2024',l:'Appointed'},{v:'Likud',l:'Party'},{v:'Fmr FM',l:'Background'}]}],
   'russia':[{name:'Vladimir Putin',role:'President of Russia',photo:'https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Vladimir_Putin_%282024%29.jpg/220px-Vladimir_Putin_%282024%29.jpg',stats:[{v:'24 yrs',l:'In Power'},{v:'600K+',l:'Troops Deployed'},{v:'Nuclear',l:'Threats Made'}]}],
   'ukraine':[{name:'Volodymyr Zelenskyy',role:'President of Ukraine',photo:'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Zelensky_Official_portrait.jpg/220px-Zelensky_Official_portrait.jpg',stats:[{v:'2019',l:'Elected'},{v:'1M+',l:'Under Arms'},{v:'$100B+',l:'Aid Received'}]}],
   'pakistan':[{name:'Asim Munir',role:'Chief of Army Staff',photo:'https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/General_Syed_Asim_Munir.jpg/220px-General_Syed_Asim_Munir.jpg',stats:[{v:'COAS',l:'Since 2022'},{v:'Op Azm',l:'Commands'},{v:'Western',l:'Front Active'}]},
@@ -1734,34 +1736,195 @@ function addImpactStep(sim,stepIdx){
   cumEl.innerHTML=allImps.slice(-8).map(x=>`<span style="display:inline-block;margin:2px 4px;font-size:9px"><span style="color:${x.c};font-weight:700">${x.v}</span> <span style="color:var(--dim);font-size:7px">${x.l}</span></span>`).join('');
 }
 
-/* ═══ DOWNLOAD SIMULATION REPORT ═══ */
+/* ═══ DOWNLOAD SIMULATION REPORT AS RICH PDF ═══ */
 function downloadSimReport(){
   if(simReportData.length===0)return;
   const name=document.getElementById('simImpactName').textContent;
-  let txt='═══════════════════════════════════════════\n';
-  txt+='   WORLD SITUATION ROOM — SIMULATION REPORT\n';
-  txt+='═══════════════════════════════════════════\n\n';
-  txt+='SCENARIO: '+name+'\n';
-  txt+='GENERATED: '+new Date().toUTCString()+'\n\n';
-  txt+='───────────────────────────────────────────\n\n';
+  const{jsPDF}=window.jspdf;
+  const doc=new jsPDF({orientation:'portrait',unit:'mm',format:'a4'});
+  const W=210,H=297,M=18;
+  const cw=W-M*2;
+  let y=0;
+
+  /* ── COLOR PALETTE ── */
+  const C={bg:[8,11,18],bgLight:[13,17,25],red:[255,51,51],amber:[255,179,0],cyan:[0,229,255],green:[0,230,118],white:[224,228,238],dim:[90,100,136],border:[26,31,48]};
+
+  function newPage(){
+    doc.addPage();y=M;
+    /* Page bg */
+    doc.setFillColor(...C.bg);doc.rect(0,0,W,H,'F');
+    /* Top line */
+    doc.setDrawColor(...C.red);doc.setLineWidth(0.8);doc.line(M,12,W-M,12);
+    /* Footer */
+    doc.setFontSize(6);doc.setTextColor(...C.dim);
+    doc.text('WORLD SITUATION ROOM — CLASSIFIED SIMULATION REPORT',M,H-8);
+    doc.text('Page '+doc.internal.getNumberOfPages(),W-M,H-8,{align:'right'});
+  }
+
+  function checkPage(need){if(y+need>H-20){newPage();return true}return false}
+
+  /* ══════ COVER PAGE ══════ */
+  doc.setFillColor(...C.bg);doc.rect(0,0,W,H,'F');
+
+  /* Top red accent bar */
+  doc.setFillColor(...C.red);doc.rect(0,0,W,3,'F');
+
+  /* Decorative grid lines */
+  doc.setDrawColor(26,31,48);doc.setLineWidth(0.15);
+  for(let i=0;i<W;i+=20)doc.line(i,0,i,H);
+  for(let i=0;i<H;i+=20)doc.line(0,i,W,i);
+
+  /* Central content area */
+  doc.setFillColor(13,17,25);doc.roundedRect(M-2,60,cw+4,120,3,3,'F');
+  doc.setDrawColor(...C.red);doc.setLineWidth(0.5);doc.roundedRect(M-2,60,cw+4,120,3,3,'S');
+
+  /* LIVE badge */
+  doc.setFillColor(...C.red);doc.roundedRect(M+4,68,22,7,2,2,'F');
+  doc.setFontSize(6);doc.setTextColor(255,255,255);doc.setFont('helvetica','bold');
+  doc.text('● LIVE',M+7,73);
+
+  /* Title */
+  doc.setFontSize(28);doc.setTextColor(...C.red);doc.setFont('helvetica','bold');
+  doc.text('WORLD',M+4,92);
+  doc.text('SITUATION ROOM',M+4,104);
+
+  /* Subtitle */
+  doc.setFontSize(10);doc.setTextColor(...C.cyan);doc.setFont('helvetica','normal');
+  doc.text('SIMULATION REPORT',M+4,115);
+
+  /* Scenario name box */
+  doc.setFillColor(8,11,18);doc.roundedRect(M+2,122,cw-2,22,2,2,'F');
+  doc.setDrawColor(...C.amber);doc.setLineWidth(0.3);doc.roundedRect(M+2,122,cw-2,22,2,2,'S');
+  doc.setFontSize(14);doc.setTextColor(...C.white);doc.setFont('helvetica','bold');
+  const nameLines=doc.splitTextToSize(name.toUpperCase(),cw-10);
+  doc.text(nameLines,M+6,134);
+
+  /* Meta info */
+  doc.setFontSize(8);doc.setTextColor(...C.dim);doc.setFont('helvetica','normal');
+  doc.text('GENERATED: '+new Date().toUTCString(),M+4,155);
+  doc.text('PHASES: '+simReportData.length,M+4,161);
+  doc.text('CLASSIFICATION: UNCLASSIFIED // FOR SIMULATION PURPOSES ONLY',M+4,167);
+
+  /* Threat level bar */
+  const totalImpacts=simReportData.reduce((a,r)=>a+r.impacts.length,0);
+  const sevLevel=totalImpacts>20?'CRITICAL':totalImpacts>12?'HIGH':totalImpacts>6?'ELEVATED':'MODERATE';
+  const sevColor=sevLevel==='CRITICAL'?C.red:sevLevel==='HIGH'?C.red:sevLevel==='ELEVATED'?C.amber:C.cyan;
+  doc.setFillColor(...sevColor);doc.roundedRect(M+4,172,40,6,1,1,'F');
+  doc.setFontSize(6);doc.setTextColor(0,0,0);doc.setFont('helvetica','bold');
+  doc.text('THREAT: '+sevLevel,M+7,176.5);
+
+  /* Bottom red accent */
+  doc.setFillColor(...C.red);doc.rect(0,H-3,W,3,'F');
+
+  /* Footer */
+  doc.setFontSize(5);doc.setTextColor(...C.dim);
+  doc.text('This report is auto-generated by the World Situation Room AI simulation engine. Content is speculative and for analytical purposes only.',W/2,H-8,{align:'center'});
+
+  /* ══════ EXECUTIVE SUMMARY PAGE ══════ */
+  newPage();
+  y=M+6;
+  doc.setFillColor(...C.red);doc.roundedRect(M,y,cw,8,1,1,'F');
+  doc.setFontSize(10);doc.setTextColor(255,255,255);doc.setFont('helvetica','bold');
+  doc.text('EXECUTIVE SUMMARY',M+4,y+5.5);y+=14;
+
+  doc.setFontSize(8);doc.setTextColor(...C.white);doc.setFont('helvetica','normal');
+  const summaryText='This simulation models the scenario "'+name+'" across '+simReportData.length+' escalation phases, tracking '+totalImpacts+' distinct impact metrics across geopolitical, economic, military, and humanitarian dimensions. The threat assessment level is '+sevLevel+'.';
+  const summaryLines=doc.splitTextToSize(summaryText,cw);
+  doc.text(summaryLines,M,y);y+=summaryLines.length*4+6;
+
+  /* Impact summary table */
+  const impactTableData=[];
+  simReportData.forEach(r=>{
+    r.impacts.forEach(x=>{
+      impactTableData.push([r.phase,x.v,x.l]);
+    });
+  });
+
+  if(impactTableData.length>0){
+    doc.setFillColor(...C.cyan);doc.roundedRect(M,y,cw,7,1,1,'F');
+    doc.setFontSize(8);doc.setTextColor(0,0,0);doc.setFont('helvetica','bold');
+    doc.text('KEY IMPACT METRICS',M+4,y+5);y+=12;
+
+    doc.autoTable({
+      startY:y,
+      head:[['PHASE','VALUE','INDICATOR']],
+      body:impactTableData.slice(0,30),
+      margin:{left:M,right:M},
+      theme:'plain',
+      styles:{fontSize:7,textColor:C.white,cellPadding:2,fillColor:C.bg,lineColor:C.border,lineWidth:0.2},
+      headStyles:{fillColor:C.bgLight,textColor:C.cyan,fontStyle:'bold',fontSize:7},
+      alternateRowStyles:{fillColor:C.bgLight},
+      columnStyles:{0:{cellWidth:30,textColor:C.amber,fontStyle:'bold'},1:{cellWidth:30,textColor:C.red,fontStyle:'bold'},2:{cellWidth:cw-60-4}},
+      didDrawPage:function(){y=doc.lastAutoTable.finalY+6}
+    });
+    y=doc.lastAutoTable.finalY+10;
+  }
+
+  /* ══════ DETAILED PHASE PAGES ══════ */
   simReportData.forEach((r,i)=>{
-    txt+='['+r.phase+'] '+r.title+'\n';
-    txt+='─────────────────────\n';
-    txt+=r.body+'\n\n';
-    if(r.impacts.length){
-      txt+='IMPACTS:\n';
-      r.impacts.forEach(x=>txt+='  • '+x.v+' — '+x.l+'\n');
-      txt+='\n';
+    checkPage(60);
+
+    /* Phase header bar */
+    const phaseColor=i<simReportData.length*0.3?C.amber:i<simReportData.length*0.7?C.red:C.cyan;
+    doc.setFillColor(...phaseColor);doc.roundedRect(M,y,cw,9,1,1,'F');
+    doc.setFontSize(9);doc.setTextColor(0,0,0);doc.setFont('helvetica','bold');
+    doc.text('PHASE '+(i+1)+' — '+r.phase,M+4,y+6.2);
+    y+=13;
+
+    /* Phase title */
+    doc.setFontSize(12);doc.setTextColor(...C.white);doc.setFont('helvetica','bold');
+    const titleLines=doc.splitTextToSize(r.title,cw);
+    doc.text(titleLines,M,y);y+=titleLines.length*5.5+3;
+
+    /* Body narrative */
+    doc.setFontSize(8);doc.setTextColor(...C.white);doc.setFont('helvetica','normal');
+    const bodyLines=doc.splitTextToSize(r.body,cw);
+    bodyLines.forEach(line=>{
+      checkPage(6);
+      doc.text(line,M,y);y+=4;
+    });
+    y+=3;
+
+    /* Impact cards row */
+    if(r.impacts.length>0){
+      checkPage(18);
+      const cardW=Math.min(38,(cw-4)/r.impacts.length-2);
+      let cx=M;
+      r.impacts.forEach(x=>{
+        if(cx+cardW>W-M){cx=M;y+=16;checkPage(18)}
+        doc.setFillColor(...C.bgLight);doc.roundedRect(cx,y,cardW,14,1,1,'F');
+        doc.setDrawColor(...C.border);doc.setLineWidth(0.2);doc.roundedRect(cx,y,cardW,14,1,1,'S');
+        /* Value */
+        doc.setFontSize(9);doc.setTextColor(...C.red);doc.setFont('helvetica','bold');
+        doc.text(x.v,cx+cardW/2,y+6,{align:'center'});
+        /* Label */
+        doc.setFontSize(5);doc.setTextColor(...C.dim);doc.setFont('helvetica','normal');
+        doc.text(x.l,cx+cardW/2,y+11,{align:'center'});
+        cx+=cardW+3;
+      });
+      y+=20;
+    }
+
+    /* Divider line */
+    if(i<simReportData.length-1){
+      checkPage(8);
+      doc.setDrawColor(...C.border);doc.setLineWidth(0.3);
+      doc.line(M+20,y,W-M-20,y);y+=6;
     }
   });
-  txt+='═══════════════════════════════════════════\n';
-  txt+='END OF REPORT — WORLD SITUATION ROOM\n';
-  txt+='═══════════════════════════════════════════\n';
-  const blob=new Blob([txt],{type:'text/plain'});
-  const a=document.createElement('a');
-  a.href=URL.createObjectURL(blob);
-  a.download='simulation-report-'+name.replace(/[^a-z0-9]/gi,'-').toLowerCase()+'.txt';
-  a.click();
+
+  /* ══════ CLASSIFICATION FOOTER PAGE ══════ */
+  checkPage(30);
+  y+=10;
+  doc.setDrawColor(...C.red);doc.setLineWidth(0.5);doc.line(M,y,W-M,y);y+=8;
+  doc.setFontSize(10);doc.setTextColor(...C.red);doc.setFont('helvetica','bold');
+  doc.text('END OF SIMULATION REPORT',W/2,y,{align:'center'});y+=6;
+  doc.setFontSize(7);doc.setTextColor(...C.dim);doc.setFont('helvetica','normal');
+  doc.text('Generated by World Situation Room AI Engine — '+new Date().toUTCString(),W/2,y,{align:'center'});y+=4;
+  doc.text('This document is for analytical and simulation purposes only. It does not represent real intelligence.',W/2,y,{align:'center'});
+
+  /* Save */
+  doc.save('WSR-Report-'+name.replace(/[^a-z0-9]/gi,'-').toLowerCase()+'.pdf');
 }
 
 /* ═══ ENHANCED startSim & playS — hooks ═══ */
