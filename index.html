@@ -349,6 +349,70 @@ body{background:var(--bg);color:var(--txt);font-family:'JetBrains Mono',monospac
 .ai-bar-regen{background:none;border:1px solid var(--bd);color:var(--dim);font-family:'Oswald';font-size:7px;letter-spacing:1.5px;text-transform:uppercase;padding:2px 8px;cursor:pointer;transition:.2s;border-radius:2px}
 .ai-bar-regen:hover{color:var(--cyan);border-color:var(--cyan)}
 
+/* ═══ SIMULATION IMPACT TIMELINE (RIGHT PANEL) ═══ */
+.sim-impact-panel{position:fixed;top:70px;right:0;width:var(--sidebar);bottom:0;z-index:96;background:var(--panel);border-left:1px solid var(--bd);backdrop-filter:blur(12px);display:none;overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--bd) transparent}
+.sim-impact-panel.show{display:block}
+.sim-impact-header{padding:14px 18px;border-bottom:1px solid var(--bd);position:sticky;top:0;background:var(--panel);z-index:2}
+.sim-impact-title{font-family:'Oswald';font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--red);display:flex;align-items:center;gap:6px}
+.sim-impact-title::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--red);animation:pd 1s ease infinite}
+.sim-impact-scenario{font-family:'Playfair Display';font-size:16px;font-weight:700;color:#fff;margin-top:4px}
+.sim-step-entry{padding:12px 18px;border-bottom:1px solid rgba(26,31,48,.4);animation:stepFadeIn .5s ease}
+@keyframes stepFadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.sim-step-phase{font-family:'Oswald';font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--cyan);margin-bottom:4px}
+.sim-step-title{font-family:'Oswald';font-size:13px;color:#fff;margin-bottom:4px}
+.sim-step-impacts{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.sim-step-imp{background:rgba(13,17,25,.8);border:1px solid var(--bd);padding:4px 8px;display:flex;align-items:center;gap:5px;font-size:9px}
+.sim-step-imp-icon{font-size:12px}
+.sim-step-imp-val{font-family:'Oswald';font-weight:600;font-size:12px}
+.sim-step-imp-lbl{color:var(--dim);font-size:7px;letter-spacing:.5px;text-transform:uppercase}
+.sim-cumulative{padding:12px 18px;border-top:2px solid var(--red);position:sticky;bottom:0;background:var(--panel)}
+.sim-cumulative-title{font-family:'Oswald';font-size:8px;letter-spacing:2px;color:var(--red);margin-bottom:6px}
+.sim-dl-btn{width:100%;background:rgba(0,229,255,.08);border:1px solid rgba(0,229,255,.3);color:var(--cyan);font-family:'Oswald';font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:8px;cursor:pointer;transition:.2s;margin-top:8px}
+.sim-dl-btn:hover{background:rgba(0,229,255,.15);border-color:var(--cyan)}
+
+/* ═══ ROCKET / MISSILE ANIMATIONS ═══ */
+.rocket-trail{position:absolute;pointer-events:none;z-index:160}
+.rocket{width:4px;height:16px;background:linear-gradient(to bottom,#fff,var(--red));border-radius:2px;position:absolute;filter:drop-shadow(0 0 6px var(--red)) drop-shadow(0 0 12px rgba(255,51,51,.6));animation:rocketFall 1.8s ease-in forwards}
+.rocket-smoke{position:absolute;width:3px;height:80px;background:linear-gradient(to bottom,rgba(255,255,255,.4),transparent);filter:blur(2px);animation:rocketFall 1.8s ease-in forwards}
+@keyframes rocketFall{0%{transform:translateY(-200px) scale(1);opacity:1}80%{opacity:1}100%{transform:translateY(0) scale(.5);opacity:0}}
+.impact-flash{position:absolute;width:0;height:0;border-radius:50%;background:radial-gradient(circle,rgba(255,200,50,.9),rgba(255,51,51,.6),transparent);pointer-events:none;animation:impactBoom .8s ease-out forwards;z-index:161}
+@keyframes impactBoom{0%{width:0;height:0;opacity:1}50%{width:120px;height:120px;margin-left:-60px;margin-top:-60px;opacity:.8}100%{width:200px;height:200px;margin-left:-100px;margin-top:-100px;opacity:0}}
+
+/* ═══ DECISION MAKER PROFILES ═══ */
+.dm-card{position:absolute;z-index:155;pointer-events:none;animation:dmFadeIn .6s ease}
+@keyframes dmFadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.dm-inner{background:rgba(4,6,10,.95);border:1px solid var(--bd);backdrop-filter:blur(12px);padding:10px;width:200px;box-shadow:0 4px 20px rgba(0,0,0,.6)}
+.dm-photo{width:50px;height:50px;border-radius:50%;border:2px solid var(--red);object-fit:cover;float:left;margin-right:10px;margin-bottom:4px;background:var(--sf2)}
+.dm-name{font-family:'Oswald';font-size:12px;font-weight:600;color:#fff;letter-spacing:.5px}
+.dm-role{font-size:7px;letter-spacing:1px;color:var(--dim);text-transform:uppercase;margin-bottom:4px}
+.dm-stats{clear:both;display:flex;gap:8px;margin-top:8px;padding-top:6px;border-top:1px solid var(--bd)}
+.dm-stat{text-align:center;flex:1}
+.dm-stat-val{font-family:'Oswald';font-size:11px;font-weight:600;color:var(--red)}
+.dm-stat-lbl{font-size:6px;letter-spacing:1px;color:var(--dim);text-transform:uppercase}
+
+/* ═══ LIVE DATA WIDGETS (below AI bar) ═══ */
+.live-widgets{position:fixed;bottom:118px;left:50%;transform:translateX(-50%);z-index:94;display:flex;gap:8px;max-width:580px}
+.live-widgets.sim-hide{display:none!important}
+.lw-card{background:rgba(4,6,10,.88);border:1px solid var(--bd);backdrop-filter:blur(12px);padding:6px 12px;display:flex;align-items:center;gap:8px;cursor:pointer;transition:.2s;border-radius:3px;white-space:nowrap}
+.lw-card:hover{border-color:rgba(90,100,136,.4)}
+.lw-icon{font-size:14px}
+.lw-info{display:flex;flex-direction:column}
+.lw-val{font-family:'Oswald';font-size:11px;font-weight:600;color:var(--txt);letter-spacing:.5px}
+.lw-lbl{font-size:6px;letter-spacing:1.5px;color:var(--dim);text-transform:uppercase}
+
+/* ═══ AUDIO CONTROL ═══ */
+.audio-ctrl{position:fixed;top:74px;right:calc(var(--sidebar) + 16px);z-index:92;background:var(--panel);border:1px solid var(--bd);padding:4px 10px;font-family:'Oswald';font-size:8px;letter-spacing:2px;color:var(--dim);cursor:pointer;transition:.2s;display:none;text-transform:uppercase;backdrop-filter:blur(8px)}
+.audio-ctrl.show{display:flex;align-items:center;gap:6px}
+.audio-ctrl:hover{color:var(--cyan);border-color:var(--cyan)}
+.audio-ctrl .vol-bars{display:flex;gap:1px;align-items:flex-end}
+.audio-ctrl .vol-bar{width:3px;background:var(--cyan);border-radius:1px;animation:volPulse 1.2s ease infinite}
+.audio-ctrl .vol-bar:nth-child(1){height:4px;animation-delay:0s}
+.audio-ctrl .vol-bar:nth-child(2){height:8px;animation-delay:.15s}
+.audio-ctrl .vol-bar:nth-child(3){height:6px;animation-delay:.3s}
+.audio-ctrl .vol-bar:nth-child(4){height:10px;animation-delay:.45s}
+.audio-ctrl.muted .vol-bar{background:var(--dim);animation:none}
+@keyframes volPulse{0%,100%{opacity:.5}50%{opacity:1}}
+
 /* ═══ MARKETS TAB ═══ */
 .mkt-card{background:rgba(13,17,25,.7);border:1px solid var(--bd);padding:12px;margin-bottom:8px;transition:.2s;cursor:pointer}
 .mkt-card:hover{border-color:rgba(90,100,136,.4)}
@@ -525,6 +589,49 @@ body{background:var(--bg);color:var(--txt);font-family:'JetBrains Mono',monospac
 <div class="coord-display" id="coordDisp">
   <div class="coord-mgrs" id="coordMgrs"></div>
   <div id="coordLatLon"></div>
+</div>
+
+<!-- SIMULATION IMPACT TIMELINE -->
+<div class="sim-impact-panel" id="simImpactPanel">
+  <div class="sim-impact-header">
+    <div class="sim-impact-title">Impact Timeline</div>
+    <div class="sim-impact-scenario" id="simImpactName"></div>
+  </div>
+  <div id="simImpactSteps"></div>
+  <div class="sim-cumulative" id="simCumulative">
+    <div class="sim-cumulative-title">Cumulative Impact</div>
+    <div id="simCumulativeData"></div>
+    <button class="sim-dl-btn" onclick="downloadSimReport()">⬇ DOWNLOAD SIMULATION REPORT</button>
+  </div>
+</div>
+
+<!-- AUDIO CONTROL -->
+<div class="audio-ctrl" id="audioCtrl" onclick="toggleSimAudio()">
+  <div class="vol-bars"><div class="vol-bar"></div><div class="vol-bar"></div><div class="vol-bar"></div><div class="vol-bar"></div></div>
+  <span id="audioLabel">AUDIO ON</span>
+</div>
+
+<!-- DECISION MAKER CONTAINER -->
+<div id="dmContainer" style="position:fixed;inset:0;z-index:154;pointer-events:none"></div>
+
+<!-- LIVE DATA WIDGETS -->
+<div class="live-widgets" id="liveWidgets">
+  <div class="lw-card" onclick="document.querySelectorAll('.rs-tab')[3].click()">
+    <div class="lw-icon">🌍</div>
+    <div class="lw-info"><div class="lw-val" id="lwQuakes">--</div><div class="lw-lbl">Live Quakes</div></div>
+  </div>
+  <div class="lw-card" onclick="document.querySelectorAll('.rs-tab')[1].click()">
+    <div class="lw-icon">✈️</div>
+    <div class="lw-info"><div class="lw-val" id="lwFlights">--</div><div class="lw-lbl">Tracked Flights</div></div>
+  </div>
+  <div class="lw-card" onclick="document.querySelectorAll('.rs-tab')[5].click()">
+    <div class="lw-icon">📊</div>
+    <div class="lw-info"><div class="lw-val" id="lwMarket">--</div><div class="lw-lbl">Top Market Odds</div></div>
+  </div>
+  <div class="lw-card" onclick="document.querySelectorAll('.rs-tab')[2].click()">
+    <div class="lw-icon">🔴</div>
+    <div class="lw-info"><div class="lw-val" id="lwConflicts">--</div><div class="lw-lbl">Active Conflicts</div></div>
+  </div>
 </div>
 
 <!-- AI CHAT BAR — FLOATING BOTTOM CENTER -->
@@ -975,6 +1082,7 @@ function startSim(idx){
   document.getElementById('infraPanel').classList.remove('show');
   document.getElementById('surgeBanner').classList.remove('show');
   document.getElementById('aiChatBar').classList.add('sim-hide');
+  document.getElementById('liveWidgets').classList.add('sim-hide');
 
   const dots=document.getElementById('simDots');dots.innerHTML='';
   curSim.steps.forEach(s=>{dots.innerHTML+=`<div class="sim-dot"><div class="sim-dot-circle"></div><div class="sim-dot-label">${s.phase}</div></div>`});
@@ -1553,33 +1661,272 @@ async function submitAIScenario(prompt){
 const _origStopSim=stopSim;
 stopSim=function(){
   _origStopSim();
+  stopSimAudio();
+  document.getElementById('simImpactPanel').classList.remove('show');
+  document.getElementById('audioCtrl').classList.remove('show');
+  document.getElementById('dmContainer').innerHTML='';
+  document.getElementById('liveWidgets').classList.remove('sim-hide');
   if(lastAIPrompt){
     aiHistoryQ.textContent=lastAIPrompt;
     aiHistory.classList.add('show');
   }
 };
 
-/* ═══ INFRASTRUCTURE HOOKS (after all functions defined) ═══ */
-(function(){
-  const origConflict=window.showConflictZone||showConflictZone;
-  const origIntel=window.showIntelLocation||showIntelLocation;
+/* ═══ DECISION MAKERS DATABASE ═══ */
+const decisionMakers={
+  'iran':[{name:'Ali Khamenei',role:'Supreme Leader of Iran',photo:'https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Ali_Khamenei_crop.jpg/220px-Ali_Khamenei_crop.jpg',stats:[{v:'44 yrs',l:'In Power'},{v:'IRGC',l:'Commands'},{v:'Nuclear',l:'Program'}]},
+    {name:'Masoud Pezeshkian',role:'President of Iran',photo:'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Masoud_Pezeshkian_%28cropped%29.jpg/220px-Masoud_Pezeshkian_%28cropped%29.jpg',stats:[{v:'2024',l:'Elected'},{v:'Reform',l:'Faction'},{v:'Moderate',l:'Stance'}]}],
+  'israel':[{name:'Benjamin Netanyahu',role:'Prime Minister of Israel',photo:'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Benjamin_Netanyahu_2023.jpg/220px-Benjamin_Netanyahu_2023.jpg',stats:[{v:'16+ yrs',l:'PM Total'},{v:'IDF',l:'Commands'},{v:'Gaza Op',l:'Ordered'}]},
+    {name:'Yoav Gallant',role:'Defence Minister',photo:'https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Yoav_Gallant_2023.jpg/220px-Yoav_Gallant_2023.jpg',stats:[{v:'IDF',l:'Background'},{v:'Gaza',l:'Operations'},{v:'Reserves',l:'Mobilized'}]}],
+  'russia':[{name:'Vladimir Putin',role:'President of Russia',photo:'https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Vladimir_Putin_%282024%29.jpg/220px-Vladimir_Putin_%282024%29.jpg',stats:[{v:'24 yrs',l:'In Power'},{v:'600K+',l:'Troops Deployed'},{v:'Nuclear',l:'Threats Made'}]}],
+  'ukraine':[{name:'Volodymyr Zelenskyy',role:'President of Ukraine',photo:'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Zelensky_Official_portrait.jpg/220px-Zelensky_Official_portrait.jpg',stats:[{v:'2019',l:'Elected'},{v:'1M+',l:'Under Arms'},{v:'$100B+',l:'Aid Received'}]}],
+  'pakistan':[{name:'Asim Munir',role:'Chief of Army Staff',photo:'https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/General_Syed_Asim_Munir.jpg/220px-General_Syed_Asim_Munir.jpg',stats:[{v:'COAS',l:'Since 2022'},{v:'Op Azm',l:'Commands'},{v:'Western',l:'Front Active'}]},
+    {name:'Shehbaz Sharif',role:'Prime Minister of Pakistan',photo:'https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Shehbaz_Sharif_in_2024.jpg/220px-Shehbaz_Sharif_in_2024.jpg',stats:[{v:'PM',l:'2nd Term'},{v:'IMF',l:'Program'},{v:'Crisis',l:'Management'}]}],
+  'india':[{name:'Narendra Modi',role:'Prime Minister of India',photo:'https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Official_portrait_of_Narendra_Modi%2C_2024.jpg/220px-Official_portrait_of_Narendra_Modi%2C_2024.jpg',stats:[{v:'3rd Term',l:'Since 2014'},{v:'Sindoor',l:'Op. Ordered'},{v:'IWT',l:'Suspended'}]}],
+  'china':[{name:'Xi Jinping',role:'President of China',photo:'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Xi_Jinping_%28Nov._2024%29.jpg/220px-Xi_Jinping_%28Nov._2024%29.jpg',stats:[{v:'3rd Term',l:'Since 2012'},{v:'$62B',l:'CPEC Invested'},{v:'PLA',l:'Modernized'}]}],
+  'usa':[{name:'Donald Trump',role:'President of the United States',photo:'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Official_portrait_of_President_Donald_J._Trump_%282024%29.jpg/220px-Official_portrait_of_President_Donald_J._Trump_%282024%29.jpg',stats:[{v:'47th',l:'President'},{v:'Epic Fury',l:'Ordered'},{v:'Navy',l:'Deployed'}]}],
+  'sudan':[{name:'Abdel Fattah al-Burhan',role:'SAF Commander / Head of State',photo:'https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Abdel_Fattah_Abdelrahman_al-Burhan.png/220px-Abdel_Fattah_Abdelrahman_al-Burhan.png',stats:[{v:'SAF',l:'Commands'},{v:'2021',l:'Coup Leader'},{v:'Civil War',l:'Since 2023'}]}],
+  'afghanistan':[{name:'Hibatullah Akhundzada',role:'Supreme Leader of Taliban',photo:'https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Hibatullah_Akhundzada_in_2016_%28cropped%29.jpg/220px-Hibatullah_Akhundzada_in_2016_%28cropped%29.jpg',stats:[{v:'Emir',l:'Since 2016'},{v:'TTP',l:'Sheltered'},{v:'Sharia',l:'Imposed'}]}],
+};
 
-  /* Wrap conflict zone click to also show infra */
-  document.addEventListener('click',function(e){
-    const card=e.target.closest('[data-conflict-idx]');
-    if(card){
-      const idx=+card.dataset.conflictIdx;
-      const c=conflictsData[idx];
-      if(c)setTimeout(function(){showInfraProximity(c.lat,c.lon,c.name)},2500);
+/* Match scenario region to decision makers */
+function getRelevantLeaders(sim,stepIdx){
+  const s=sim.steps[stepIdx];
+  const text=(sim.name+' '+(s.title||'')+' '+(s.body||'')).toLowerCase();
+  const found=[];
+  const keys={iran:['iran','hormuz','tehran','irgc','khamenei'],israel:['israel','gaza','idf','netanyahu','tel aviv'],russia:['russia','putin','ukraine','donetsk','moscow'],ukraine:['ukraine','zelenskyy','kyiv','zaporizhzhia'],pakistan:['pakistan','islamabad','waziristan','durand','karachi','munir','loc','cpec'],india:['india','modi','sindoor','kashmir','loc'],china:['china','xi','cpec','beijing','taiwan','gwadar'],usa:['trump','pentagon','us navy','epic fury','washington','america'],sudan:['sudan','khartoum','rsf','saf','darfur'],afghanistan:['afghan','taliban','kabul','bagram','durand']};
+  for(const[k,words]of Object.entries(keys)){
+    if(words.some(w=>text.includes(w))&&decisionMakers[k]){
+      found.push(...decisionMakers[k]);
     }
-    const icard=e.target.closest('[data-intel-idx]');
-    if(icard){
-      const idx=+icard.dataset.intelIdx;
-      const d=intelData[idx];
-      if(d)setTimeout(function(){showInfraProximity(d.lat,d.lon,d.name)},2500);
+  }
+  return found.slice(0,3);
+}
+
+function showDecisionMakers(leaders,cam){
+  const container=document.getElementById('dmContainer');
+  container.innerHTML='';
+  leaders.forEach((ldr,i)=>{
+    const x=350+i*220;
+    const y=120+i*50;
+    const card=document.createElement('div');
+    card.className='dm-card';
+    card.style.left=x+'px';card.style.top=y+'px';
+    card.innerHTML=`<div class="dm-inner"><img class="dm-photo" src="${ldr.photo}" onerror="this.style.display='none'" alt="${ldr.name}"><div class="dm-name">${ldr.name}</div><div class="dm-role">${ldr.role}</div><div class="dm-stats">${ldr.stats.map(s=>`<div class="dm-stat"><div class="dm-stat-val">${s.v}</div><div class="dm-stat-lbl">${s.l}</div></div>`).join('')}</div></div>`;
+    container.appendChild(card);
+  });
+}
+
+/* ═══ ROCKET / MISSILE ANIMATIONS ═══ */
+function fireRockets(lat,lon,count){
+  count=count||3;
+  for(let i=0;i<count;i++){
+    setTimeout(()=>{
+      try{
+        const pt=map.project([lon+(Math.random()-.5)*.5,lat+(Math.random()-.5)*.3]);
+        const rocket=document.createElement('div');
+        rocket.className='rocket-trail';
+        rocket.style.left=pt.x+'px';rocket.style.top=pt.y+'px';
+        rocket.innerHTML='<div class="rocket-smoke"></div><div class="rocket"></div>';
+        document.getElementById('ripBox').appendChild(rocket);
+        setTimeout(()=>{
+          const flash=document.createElement('div');
+          flash.className='impact-flash';
+          flash.style.left=pt.x+'px';flash.style.top=pt.y+'px';
+          document.getElementById('ripBox').appendChild(flash);
+          flash.addEventListener('animationend',()=>flash.remove());
+        },1600);
+        setTimeout(()=>rocket.remove(),2000);
+      }catch(e){}
+    },i*400);
+  }
+}
+
+/* ═══ WAR AMBIENT AUDIO ═══ */
+let simAudioCtx=null,simAudioGain=null,simAudioNodes=[];
+let simAudioMuted=false;
+
+function startSimAudio(){
+  try{
+    if(!simAudioCtx)simAudioCtx=new(window.AudioContext||window.webkitAudioContext)();
+    if(simAudioCtx.state==='suspended')simAudioCtx.resume();
+    simAudioGain=simAudioCtx.createGain();
+    simAudioGain.gain.value=0.15;
+    simAudioGain.connect(simAudioCtx.destination);
+    /* Deep war drone — layered oscillators */
+    [48,72,96,144].forEach(freq=>{
+      const osc=simAudioCtx.createOscillator();
+      const g=simAudioCtx.createGain();
+      osc.type=freq<100?'sawtooth':'sine';
+      osc.frequency.value=freq;
+      g.gain.value=freq<100?0.08:0.03;
+      /* Slow LFO modulation for tension */
+      const lfo=simAudioCtx.createOscillator();
+      const lfoGain=simAudioCtx.createGain();
+      lfo.frequency.value=0.2+Math.random()*0.3;
+      lfoGain.gain.value=freq*0.02;
+      lfo.connect(lfoGain);
+      lfoGain.connect(osc.frequency);
+      lfo.start();
+      osc.connect(g);
+      g.connect(simAudioGain);
+      osc.start();
+      simAudioNodes.push(osc,lfo);
+    });
+    /* Filtered noise for distant rumble */
+    const bufSize=simAudioCtx.sampleRate*2;
+    const buf=simAudioCtx.createBuffer(1,bufSize,simAudioCtx.sampleRate);
+    const d=buf.getChannelData(0);
+    for(let i=0;i<bufSize;i++)d[i]=(Math.random()*2-1)*0.5;
+    const noise=simAudioCtx.createBufferSource();
+    noise.buffer=buf;noise.loop=true;
+    const filt=simAudioCtx.createBiquadFilter();
+    filt.type='lowpass';filt.frequency.value=120;filt.Q.value=1;
+    const ng=simAudioCtx.createGain();ng.gain.value=0.12;
+    noise.connect(filt);filt.connect(ng);ng.connect(simAudioGain);
+    noise.start();
+    simAudioNodes.push(noise);
+    document.getElementById('audioCtrl').classList.add('show');
+    document.getElementById('audioCtrl').classList.remove('muted');
+    document.getElementById('audioLabel').textContent='AUDIO ON';
+    simAudioMuted=false;
+  }catch(e){console.warn('Audio:',e)}
+}
+
+function stopSimAudio(){
+  simAudioNodes.forEach(n=>{try{n.stop()}catch(e){}});
+  simAudioNodes=[];
+  if(simAudioGain){try{simAudioGain.disconnect()}catch(e){}}
+  simAudioGain=null;
+  document.getElementById('audioCtrl').classList.remove('show');
+}
+
+function toggleSimAudio(){
+  if(!simAudioGain)return;
+  simAudioMuted=!simAudioMuted;
+  simAudioGain.gain.value=simAudioMuted?0:0.15;
+  document.getElementById('audioCtrl').classList.toggle('muted',simAudioMuted);
+  document.getElementById('audioLabel').textContent=simAudioMuted?'MUTED':'AUDIO ON';
+}
+
+/* ═══ IMPACT TIMELINE TRACKER ═══ */
+let simReportData=[];
+
+function addImpactStep(sim,stepIdx){
+  const s=sim.steps[stepIdx];
+  const panel=document.getElementById('simImpactPanel');
+  const stepsEl=document.getElementById('simImpactSteps');
+  const cumEl=document.getElementById('simCumulativeData');
+  document.getElementById('simImpactName').textContent=sim.name;
+  panel.classList.add('show');
+
+  const entry=document.createElement('div');
+  entry.className='sim-step-entry';
+  let impHTML='';
+  if(s.imp)s.imp.forEach(x=>{
+    impHTML+=`<div class="sim-step-imp"><span class="sim-step-imp-icon">${x.i}</span><span class="sim-step-imp-val" style="color:${x.c}">${x.v}</span><span class="sim-step-imp-lbl">${x.l}</span></div>`;
+  });
+  entry.innerHTML=`<div class="sim-step-phase">${s.phase}</div><div class="sim-step-title">${(s.title||'').replace(/<[^>]+>/g,'')}</div><div class="sim-step-impacts">${impHTML}</div>`;
+  stepsEl.appendChild(entry);
+  stepsEl.scrollTop=stepsEl.scrollHeight;
+
+  /* Track for report */
+  simReportData.push({phase:s.phase,title:(s.title||'').replace(/<[^>]+>/g,''),body:s.body||'',impacts:s.imp||[]});
+
+  /* Cumulative summary */
+  const allImps=[];
+  simReportData.forEach(r=>r.impacts.forEach(x=>allImps.push(x)));
+  cumEl.innerHTML=allImps.slice(-8).map(x=>`<span style="display:inline-block;margin:2px 4px;font-size:9px"><span style="color:${x.c};font-weight:700">${x.v}</span> <span style="color:var(--dim);font-size:7px">${x.l}</span></span>`).join('');
+}
+
+/* ═══ DOWNLOAD SIMULATION REPORT ═══ */
+function downloadSimReport(){
+  if(simReportData.length===0)return;
+  const name=document.getElementById('simImpactName').textContent;
+  let txt='═══════════════════════════════════════════\n';
+  txt+='   WORLD SITUATION ROOM — SIMULATION REPORT\n';
+  txt+='═══════════════════════════════════════════\n\n';
+  txt+='SCENARIO: '+name+'\n';
+  txt+='GENERATED: '+new Date().toUTCString()+'\n\n';
+  txt+='───────────────────────────────────────────\n\n';
+  simReportData.forEach((r,i)=>{
+    txt+='['+r.phase+'] '+r.title+'\n';
+    txt+='─────────────────────\n';
+    txt+=r.body+'\n\n';
+    if(r.impacts.length){
+      txt+='IMPACTS:\n';
+      r.impacts.forEach(x=>txt+='  • '+x.v+' — '+x.l+'\n');
+      txt+='\n';
     }
   });
-})();
+  txt+='═══════════════════════════════════════════\n';
+  txt+='END OF REPORT — WORLD SITUATION ROOM\n';
+  txt+='═══════════════════════════════════════════\n';
+  const blob=new Blob([txt],{type:'text/plain'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='simulation-report-'+name.replace(/[^a-z0-9]/gi,'-').toLowerCase()+'.txt';
+  a.click();
+}
+
+/* ═══ ENHANCED startSim & playS — hooks ═══ */
+const _origStartSim2=startSim;
+startSim=function(idx){
+  simReportData=[];
+  document.getElementById('simImpactSteps').innerHTML='';
+  document.getElementById('simCumulativeData').innerHTML='';
+  document.getElementById('dmContainer').innerHTML='';
+  document.getElementById('liveWidgets').classList.add('sim-hide');
+  _origStartSim2(idx);
+  startSimAudio();
+};
+
+const _origPlayS2=playS;
+playS=function(idx){
+  _origPlayS2(idx);
+  if(!simOn||!curSim||idx>=curSim.steps.length)return;
+  const s=curSim.steps[idx];
+  /* Add impact to timeline */
+  addImpactStep(curSim,idx);
+  /* Fire rockets on conflict areas */
+  if(s.rip&&s.rip.length>0){
+    setTimeout(()=>{
+      s.rip.forEach(r=>{
+        if(r.c==='red'||r.c==='amber')fireRockets(r.la,r.lo,r.n||3);
+      });
+    },2000);
+  }
+  /* Show decision makers */
+  const leaders=getRelevantLeaders(curSim,idx);
+  if(leaders.length)setTimeout(()=>showDecisionMakers(leaders,s.cam),1500);
+};
+
+/* ═══ LIVE WIDGETS UPDATE ═══ */
+function updateLiveWidgets(){
+  document.getElementById('lwQuakes').textContent=quakeCount;
+  document.getElementById('lwFlights').textContent=flightCount.toLocaleString();
+  document.getElementById('lwConflicts').textContent=conflictCount;
+  const topMkt=marketsData.reduce((a,b)=>a.prob>b.prob?a:b);
+  document.getElementById('lwMarket').textContent=topMkt.prob+'%';
+}
+setInterval(updateLiveWidgets,3000);
+updateLiveWidgets();
+
+/* ═══ INFRASTRUCTURE HOOKS (after all functions defined) ═══ */
+document.addEventListener('click',function(e){
+  const card=e.target.closest('[data-conflict-idx]');
+  if(card){
+    const idx=+card.dataset.conflictIdx;
+    const c=conflictsData[idx];
+    if(c)setTimeout(function(){showInfraProximity(c.lat,c.lon,c.name)},2500);
+  }
+  const icard=e.target.closest('[data-intel-idx]');
+  if(icard){
+    const idx=+icard.dataset.intelIdx;
+    const d=intelData[idx];
+    if(d)setTimeout(function(){showInfraProximity(d.lat,d.lon,d.name)},2500);
+  }
+});
 
 </script>
 </body>
